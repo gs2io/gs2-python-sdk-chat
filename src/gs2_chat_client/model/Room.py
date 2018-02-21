@@ -19,13 +19,13 @@ class Room(object):
     def __init__(self, params=None):
         if params is None:
             self.__room_id = None
-            self.__need_password = None
             self.__allow_user_ids = None
+            self.__need_password = None
             self.__create_at = None
         else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
-            self.set_need_password(params['needPassword'] if 'needPassword' in params.keys() else None)
             self.set_allow_user_ids(params['allowUserIds'] if 'allowUserIds' in params.keys() else None)
+            self.set_need_password(params['needPassword'] if 'needPassword' in params.keys() else None)
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
 
 
@@ -45,22 +45,6 @@ class Room(object):
         """
         self.__room_id = room_id
 
-    def get_need_password(self):
-        """
-        メッセージの送受信にパスワードが必要かを取得
-        :return: メッセージの送受信にパスワードが必要か
-        :rtype: bool
-        """
-        return self.__need_password
-
-    def set_need_password(self, need_password):
-        """
-        メッセージの送受信にパスワードが必要かを設定
-        :param need_password: メッセージの送受信にパスワードが必要か
-        :type need_password: bool
-        """
-        self.__need_password = need_password
-
     def get_allow_user_ids(self):
         """
         参加可能なユーザIDリストを取得
@@ -76,6 +60,22 @@ class Room(object):
         :type allow_user_ids: list[unicode]
         """
         self.__allow_user_ids = allow_user_ids
+
+    def get_need_password(self):
+        """
+        メッセージの送受信にパスワードが必要かを取得
+        :return: メッセージの送受信にパスワードが必要か
+        :rtype: bool
+        """
+        return self.__need_password
+
+    def set_need_password(self, need_password):
+        """
+        メッセージの送受信にパスワードが必要かを設定
+        :param need_password: メッセージの送受信にパスワードが必要か
+        :type need_password: bool
+        """
+        self.__need_password = need_password
 
     def get_create_at(self):
         """
@@ -96,7 +96,7 @@ class Room(object):
     def to_dict(self):
         return { 
             "roomId": self.__room_id,
-            "needPassword": self.__need_password,
             "allowUserIds": self.__allow_user_ids,
+            "needPassword": self.__need_password,
             "createAt": self.__create_at,
         }

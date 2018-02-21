@@ -33,13 +33,13 @@ class CreateRoomRequest(Gs2BasicRequest):
         if params is None:
             self.__lobby_name = None
             self.__room_id = None
-            self.__password = None
             self.__allow_user_ids = None
+            self.__password = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
-            self.set_password(params['password'] if 'password' in params.keys() else None)
             self.set_allow_user_ids(params['allowUserIds'] if 'allowUserIds' in params.keys() else None)
+            self.set_password(params['password'] if 'password' in params.keys() else None)
 
     def get_lobby_name(self):
         """
@@ -95,33 +95,6 @@ class CreateRoomRequest(Gs2BasicRequest):
         self.set_room_id(room_id)
         return self
 
-    def get_password(self):
-        """
-        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を取得
-        :return: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
-        :rtype: unicode
-        """
-        return self.__password
-
-    def set_password(self, password):
-        """
-        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を設定
-        :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
-        :type password: unicode
-        """
-        self.__password = password
-
-    def with_password(self, password):
-        """
-        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を設定
-        :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
-        :type password: unicode
-        :return: this
-        :rtype: CreateRoomRequest
-        """
-        self.set_password(password)
-        return self
-
     def get_allow_user_ids(self):
         """
         ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定を取得
@@ -147,4 +120,31 @@ class CreateRoomRequest(Gs2BasicRequest):
         :rtype: CreateRoomRequest
         """
         self.set_allow_user_ids(allow_user_ids)
+        return self
+
+    def get_password(self):
+        """
+        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を取得
+        :return: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
+        :rtype: unicode
+        """
+        return self.__password
+
+    def set_password(self, password):
+        """
+        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を設定
+        :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
+        :type password: unicode
+        """
+        self.__password = password
+
+    def with_password(self, password):
+        """
+        ルームにアクセスする際にパスワードを要求する場合は文字列を指定を設定
+        :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
+        :type password: unicode
+        :return: this
+        :rtype: CreateRoomRequest
+        """
+        self.set_password(password)
         return self

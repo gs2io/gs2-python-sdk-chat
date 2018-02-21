@@ -33,15 +33,15 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         if params is None:
             self.__lobby_name = None
             self.__room_id = None
+            self.__user_id = None
             self.__message = None
             self.__meta = None
-            self.__user_id = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
+            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
             self.set_message(params['message'] if 'message' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
-            self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
 
     def get_lobby_name(self):
         """
@@ -97,6 +97,33 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         self.set_room_id(room_id)
         return self
 
+    def get_user_id(self):
+        """
+        ユーザIDを取得
+        :return: ユーザID
+        :rtype: unicode
+        """
+        return self.__user_id
+
+    def set_user_id(self, user_id):
+        """
+        ユーザIDを設定
+        :param user_id: ユーザID
+        :type user_id: unicode
+        """
+        self.__user_id = user_id
+
+    def with_user_id(self, user_id):
+        """
+        ユーザIDを設定
+        :param user_id: ユーザID
+        :type user_id: unicode
+        :return: this
+        :rtype: SendMessageNoAuthRequest
+        """
+        self.set_user_id(user_id)
+        return self
+
     def get_message(self):
         """
         メッセージテキストを取得
@@ -149,31 +176,4 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :rtype: SendMessageNoAuthRequest
         """
         self.set_meta(meta)
-        return self
-
-    def get_user_id(self):
-        """
-        ユーザIDを取得
-        :return: ユーザID
-        :rtype: unicode
-        """
-        return self.__user_id
-
-    def set_user_id(self, user_id):
-        """
-        ユーザIDを設定
-        :param user_id: ユーザID
-        :type user_id: unicode
-        """
-        self.__user_id = user_id
-
-    def with_user_id(self, user_id):
-        """
-        ユーザIDを設定
-        :param user_id: ユーザID
-        :type user_id: unicode
-        :return: this
-        :rtype: SendMessageNoAuthRequest
-        """
-        self.set_user_id(user_id)
         return self

@@ -19,26 +19,46 @@ class Lobby(object):
     def __init__(self, params=None):
         if params is None:
             self.__lobby_id = None
+            self.__owner_id = None
             self.__name = None
+            self.__description = None
             self.__service_class = None
             self.__notification_type = None
-            self.__create_at = None
-            self.__notification_game_name = None
             self.__notification_url = None
-            self.__owner_id = None
+            self.__notification_game_name = None
+            self.__create_room_trigger_script = None
+            self.__create_room_done_trigger_script = None
+            self.__delete_room_trigger_script = None
+            self.__delete_room_done_trigger_script = None
+            self.__create_subscribe_trigger_script = None
+            self.__create_subscribe_done_trigger_script = None
+            self.__delete_subscribe_trigger_script = None
+            self.__delete_subscribe_done_trigger_script = None
+            self.__send_message_trigger_script = None
+            self.__send_message_done_trigger_script = None
+            self.__create_at = None
             self.__update_at = None
-            self.__description = None
         else:
             self.set_lobby_id(params['lobbyId'] if 'lobbyId' in params.keys() else None)
+            self.set_owner_id(params['ownerId'] if 'ownerId' in params.keys() else None)
             self.set_name(params['name'] if 'name' in params.keys() else None)
+            self.set_description(params['description'] if 'description' in params.keys() else None)
             self.set_service_class(params['serviceClass'] if 'serviceClass' in params.keys() else None)
             self.set_notification_type(params['notificationType'] if 'notificationType' in params.keys() else None)
-            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
-            self.set_notification_game_name(params['notificationGameName'] if 'notificationGameName' in params.keys() else None)
             self.set_notification_url(params['notificationUrl'] if 'notificationUrl' in params.keys() else None)
-            self.set_owner_id(params['ownerId'] if 'ownerId' in params.keys() else None)
+            self.set_notification_game_name(params['notificationGameName'] if 'notificationGameName' in params.keys() else None)
+            self.set_create_room_trigger_script(params['createRoomTriggerScript'] if 'createRoomTriggerScript' in params.keys() else None)
+            self.set_create_room_done_trigger_script(params['createRoomDoneTriggerScript'] if 'createRoomDoneTriggerScript' in params.keys() else None)
+            self.set_delete_room_trigger_script(params['deleteRoomTriggerScript'] if 'deleteRoomTriggerScript' in params.keys() else None)
+            self.set_delete_room_done_trigger_script(params['deleteRoomDoneTriggerScript'] if 'deleteRoomDoneTriggerScript' in params.keys() else None)
+            self.set_create_subscribe_trigger_script(params['createSubscribeTriggerScript'] if 'createSubscribeTriggerScript' in params.keys() else None)
+            self.set_create_subscribe_done_trigger_script(params['createSubscribeDoneTriggerScript'] if 'createSubscribeDoneTriggerScript' in params.keys() else None)
+            self.set_delete_subscribe_trigger_script(params['deleteSubscribeTriggerScript'] if 'deleteSubscribeTriggerScript' in params.keys() else None)
+            self.set_delete_subscribe_done_trigger_script(params['deleteSubscribeDoneTriggerScript'] if 'deleteSubscribeDoneTriggerScript' in params.keys() else None)
+            self.set_send_message_trigger_script(params['sendMessageTriggerScript'] if 'sendMessageTriggerScript' in params.keys() else None)
+            self.set_send_message_done_trigger_script(params['sendMessageDoneTriggerScript'] if 'sendMessageDoneTriggerScript' in params.keys() else None)
+            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
-            self.set_description(params['description'] if 'description' in params.keys() else None)
 
 
     def get_lobby_id(self):
@@ -57,6 +77,22 @@ class Lobby(object):
         """
         self.__lobby_id = lobby_id
 
+    def get_owner_id(self):
+        """
+        オーナーIDを取得
+        :return: オーナーID
+        :rtype: unicode
+        """
+        return self.__owner_id
+
+    def set_owner_id(self, owner_id):
+        """
+        オーナーIDを設定
+        :param owner_id: オーナーID
+        :type owner_id: unicode
+        """
+        self.__owner_id = owner_id
+
     def get_name(self):
         """
         ゲーム名を取得
@@ -72,6 +108,22 @@ class Lobby(object):
         :type name: unicode
         """
         self.__name = name
+
+    def get_description(self):
+        """
+        説明文を取得
+        :return: 説明文
+        :rtype: unicode
+        """
+        return self.__description
+
+    def set_description(self, description):
+        """
+        説明文を設定
+        :param description: 説明文
+        :type description: unicode
+        """
+        self.__description = description
 
     def get_service_class(self):
         """
@@ -105,21 +157,21 @@ class Lobby(object):
         """
         self.__notification_type = notification_type
 
-    def get_create_at(self):
+    def get_notification_url(self):
         """
-        作成日時(エポック秒)を取得
-        :return: 作成日時(エポック秒)
-        :rtype: int
+        http/https を選択した際の通知先URLを取得
+        :return: http/https を選択した際の通知先URL
+        :rtype: unicode
         """
-        return self.__create_at
+        return self.__notification_url
 
-    def set_create_at(self, create_at):
+    def set_notification_url(self, notification_url):
         """
-        作成日時(エポック秒)を設定
-        :param create_at: 作成日時(エポック秒)
-        :type create_at: int
+        http/https を選択した際の通知先URLを設定
+        :param notification_url: http/https を選択した際の通知先URL
+        :type notification_url: unicode
         """
-        self.__create_at = create_at
+        self.__notification_url = notification_url
 
     def get_notification_game_name(self):
         """
@@ -137,37 +189,181 @@ class Lobby(object):
         """
         self.__notification_game_name = notification_game_name
 
-    def get_notification_url(self):
+    def get_create_room_trigger_script(self):
         """
-        http/https を選択した際の通知先URLを取得
-        :return: http/https を選択した際の通知先URL
+        ルーム作成時 に実行されるGS2-Scriptを取得
+        :return: ルーム作成時 に実行されるGS2-Script
         :rtype: unicode
         """
-        return self.__notification_url
+        return self.__create_room_trigger_script
 
-    def set_notification_url(self, notification_url):
+    def set_create_room_trigger_script(self, create_room_trigger_script):
         """
-        http/https を選択した際の通知先URLを設定
-        :param notification_url: http/https を選択した際の通知先URL
-        :type notification_url: unicode
+        ルーム作成時 に実行されるGS2-Scriptを設定
+        :param create_room_trigger_script: ルーム作成時 に実行されるGS2-Script
+        :type create_room_trigger_script: unicode
         """
-        self.__notification_url = notification_url
+        self.__create_room_trigger_script = create_room_trigger_script
 
-    def get_owner_id(self):
+    def get_create_room_done_trigger_script(self):
         """
-        オーナーIDを取得
-        :return: オーナーID
+        ルーム作成完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム作成完了時 に実行されるGS2-Script
         :rtype: unicode
         """
-        return self.__owner_id
+        return self.__create_room_done_trigger_script
 
-    def set_owner_id(self, owner_id):
+    def set_create_room_done_trigger_script(self, create_room_done_trigger_script):
         """
-        オーナーIDを設定
-        :param owner_id: オーナーID
-        :type owner_id: unicode
+        ルーム作成完了時 に実行されるGS2-Scriptを設定
+        :param create_room_done_trigger_script: ルーム作成完了時 に実行されるGS2-Script
+        :type create_room_done_trigger_script: unicode
         """
-        self.__owner_id = owner_id
+        self.__create_room_done_trigger_script = create_room_done_trigger_script
+
+    def get_delete_room_trigger_script(self):
+        """
+        ルーム削除時 に実行されるGS2-Scriptを取得
+        :return: ルーム削除時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_room_trigger_script
+
+    def set_delete_room_trigger_script(self, delete_room_trigger_script):
+        """
+        ルーム削除時 に実行されるGS2-Scriptを設定
+        :param delete_room_trigger_script: ルーム削除時 に実行されるGS2-Script
+        :type delete_room_trigger_script: unicode
+        """
+        self.__delete_room_trigger_script = delete_room_trigger_script
+
+    def get_delete_room_done_trigger_script(self):
+        """
+        ルーム削除完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム削除完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_room_done_trigger_script
+
+    def set_delete_room_done_trigger_script(self, delete_room_done_trigger_script):
+        """
+        ルーム削除完了時 に実行されるGS2-Scriptを設定
+        :param delete_room_done_trigger_script: ルーム削除完了時 に実行されるGS2-Script
+        :type delete_room_done_trigger_script: unicode
+        """
+        self.__delete_room_done_trigger_script = delete_room_done_trigger_script
+
+    def get_create_subscribe_trigger_script(self):
+        """
+        ルーム購読時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_subscribe_trigger_script
+
+    def set_create_subscribe_trigger_script(self, create_subscribe_trigger_script):
+        """
+        ルーム購読時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_trigger_script: ルーム購読時 に実行されるGS2-Script
+        :type create_subscribe_trigger_script: unicode
+        """
+        self.__create_subscribe_trigger_script = create_subscribe_trigger_script
+
+    def get_create_subscribe_done_trigger_script(self):
+        """
+        ルーム購読完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_subscribe_done_trigger_script
+
+    def set_create_subscribe_done_trigger_script(self, create_subscribe_done_trigger_script):
+        """
+        ルーム購読完了時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_done_trigger_script: ルーム購読完了時 に実行されるGS2-Script
+        :type create_subscribe_done_trigger_script: unicode
+        """
+        self.__create_subscribe_done_trigger_script = create_subscribe_done_trigger_script
+
+    def get_delete_subscribe_trigger_script(self):
+        """
+        ルーム購読解除時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読解除時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_subscribe_trigger_script
+
+    def set_delete_subscribe_trigger_script(self, delete_subscribe_trigger_script):
+        """
+        ルーム購読解除時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_trigger_script: ルーム購読解除時 に実行されるGS2-Script
+        :type delete_subscribe_trigger_script: unicode
+        """
+        self.__delete_subscribe_trigger_script = delete_subscribe_trigger_script
+
+    def get_delete_subscribe_done_trigger_script(self):
+        """
+        ルーム購読解除完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読解除完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_subscribe_done_trigger_script
+
+    def set_delete_subscribe_done_trigger_script(self, delete_subscribe_done_trigger_script):
+        """
+        ルーム購読解除完了時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_done_trigger_script: ルーム購読解除完了時 に実行されるGS2-Script
+        :type delete_subscribe_done_trigger_script: unicode
+        """
+        self.__delete_subscribe_done_trigger_script = delete_subscribe_done_trigger_script
+
+    def get_send_message_trigger_script(self):
+        """
+        メッセージ送信時 に実行されるGS2-Scriptを取得
+        :return: メッセージ送信時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__send_message_trigger_script
+
+    def set_send_message_trigger_script(self, send_message_trigger_script):
+        """
+        メッセージ送信時 に実行されるGS2-Scriptを設定
+        :param send_message_trigger_script: メッセージ送信時 に実行されるGS2-Script
+        :type send_message_trigger_script: unicode
+        """
+        self.__send_message_trigger_script = send_message_trigger_script
+
+    def get_send_message_done_trigger_script(self):
+        """
+        メッセージ送信完了時 に実行されるGS2-Scriptを取得
+        :return: メッセージ送信完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__send_message_done_trigger_script
+
+    def set_send_message_done_trigger_script(self, send_message_done_trigger_script):
+        """
+        メッセージ送信完了時 に実行されるGS2-Scriptを設定
+        :param send_message_done_trigger_script: メッセージ送信完了時 に実行されるGS2-Script
+        :type send_message_done_trigger_script: unicode
+        """
+        self.__send_message_done_trigger_script = send_message_done_trigger_script
+
+    def get_create_at(self):
+        """
+        作成日時(エポック秒)を取得
+        :return: 作成日時(エポック秒)
+        :rtype: int
+        """
+        return self.__create_at
+
+    def set_create_at(self, create_at):
+        """
+        作成日時(エポック秒)を設定
+        :param create_at: 作成日時(エポック秒)
+        :type create_at: int
+        """
+        self.__create_at = create_at
 
     def get_update_at(self):
         """
@@ -185,32 +381,26 @@ class Lobby(object):
         """
         self.__update_at = update_at
 
-    def get_description(self):
-        """
-        説明文を取得
-        :return: 説明文
-        :rtype: unicode
-        """
-        return self.__description
-
-    def set_description(self, description):
-        """
-        説明文を設定
-        :param description: 説明文
-        :type description: unicode
-        """
-        self.__description = description
-
     def to_dict(self):
         return { 
             "lobbyId": self.__lobby_id,
+            "ownerId": self.__owner_id,
             "name": self.__name,
+            "description": self.__description,
             "serviceClass": self.__service_class,
             "notificationType": self.__notification_type,
-            "createAt": self.__create_at,
-            "notificationGameName": self.__notification_game_name,
             "notificationUrl": self.__notification_url,
-            "ownerId": self.__owner_id,
+            "notificationGameName": self.__notification_game_name,
+            "createRoomTriggerScript": self.__create_room_trigger_script,
+            "createRoomDoneTriggerScript": self.__create_room_done_trigger_script,
+            "deleteRoomTriggerScript": self.__delete_room_trigger_script,
+            "deleteRoomDoneTriggerScript": self.__delete_room_done_trigger_script,
+            "createSubscribeTriggerScript": self.__create_subscribe_trigger_script,
+            "createSubscribeDoneTriggerScript": self.__create_subscribe_done_trigger_script,
+            "deleteSubscribeTriggerScript": self.__delete_subscribe_trigger_script,
+            "deleteSubscribeDoneTriggerScript": self.__delete_subscribe_done_trigger_script,
+            "sendMessageTriggerScript": self.__send_message_trigger_script,
+            "sendMessageDoneTriggerScript": self.__send_message_done_trigger_script,
+            "createAt": self.__create_at,
             "updateAt": self.__update_at,
-            "description": self.__description,
         }

@@ -19,14 +19,14 @@ class Subscribe(object):
     def __init__(self, params=None):
         if params is None:
             self.__room_id = None
-            self.__enable_offline_transfer = None
             self.__user_id = None
+            self.__enable_offline_transfer = None
             self.__offline_transfer_sound = None
             self.__subscribe_at = None
         else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
-            self.set_enable_offline_transfer(params['enableOfflineTransfer'] if 'enableOfflineTransfer' in params.keys() else None)
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+            self.set_enable_offline_transfer(params['enableOfflineTransfer'] if 'enableOfflineTransfer' in params.keys() else None)
             self.set_offline_transfer_sound(params['offlineTransferSound'] if 'offlineTransferSound' in params.keys() else None)
             self.set_subscribe_at(params['subscribeAt'] if 'subscribeAt' in params.keys() else None)
 
@@ -47,22 +47,6 @@ class Subscribe(object):
         """
         self.__room_id = room_id
 
-    def get_enable_offline_transfer(self):
-        """
-        オフライン転送を使用するかを取得
-        :return: オフライン転送を使用するか
-        :rtype: bool
-        """
-        return self.__enable_offline_transfer
-
-    def set_enable_offline_transfer(self, enable_offline_transfer):
-        """
-        オフライン転送を使用するかを設定
-        :param enable_offline_transfer: オフライン転送を使用するか
-        :type enable_offline_transfer: bool
-        """
-        self.__enable_offline_transfer = enable_offline_transfer
-
     def get_user_id(self):
         """
         ユーザIDを取得
@@ -78,6 +62,22 @@ class Subscribe(object):
         :type user_id: unicode
         """
         self.__user_id = user_id
+
+    def get_enable_offline_transfer(self):
+        """
+        オフライン転送を使用するかを取得
+        :return: オフライン転送を使用するか
+        :rtype: bool
+        """
+        return self.__enable_offline_transfer
+
+    def set_enable_offline_transfer(self, enable_offline_transfer):
+        """
+        オフライン転送を使用するかを設定
+        :param enable_offline_transfer: オフライン転送を使用するか
+        :type enable_offline_transfer: bool
+        """
+        self.__enable_offline_transfer = enable_offline_transfer
 
     def get_offline_transfer_sound(self):
         """
@@ -114,8 +114,8 @@ class Subscribe(object):
     def to_dict(self):
         return { 
             "roomId": self.__room_id,
-            "enableOfflineTransfer": self.__enable_offline_transfer,
             "userId": self.__user_id,
+            "enableOfflineTransfer": self.__enable_offline_transfer,
             "offlineTransferSound": self.__offline_transfer_sound,
             "subscribeAt": self.__subscribe_at,
         }

@@ -18,18 +18,34 @@ class Message(object):
 
     def __init__(self, params=None):
         if params is None:
+            self.__message_id = None
             self.__user_id = None
             self.__message = None
-            self.__create_at = None
             self.__meta = None
-            self.__message_id = None
+            self.__create_at = None
         else:
+            self.set_message_id(params['messageId'] if 'messageId' in params.keys() else None)
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
             self.set_message(params['message'] if 'message' in params.keys() else None)
-            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
-            self.set_message_id(params['messageId'] if 'messageId' in params.keys() else None)
+            self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
 
+
+    def get_message_id(self):
+        """
+        メッセージIDを取得
+        :return: メッセージID
+        :rtype: unicode
+        """
+        return self.__message_id
+
+    def set_message_id(self, message_id):
+        """
+        メッセージIDを設定
+        :param message_id: メッセージID
+        :type message_id: unicode
+        """
+        self.__message_id = message_id
 
     def get_user_id(self):
         """
@@ -63,22 +79,6 @@ class Message(object):
         """
         self.__message = message
 
-    def get_create_at(self):
-        """
-        作成日時(エポック秒)を取得
-        :return: 作成日時(エポック秒)
-        :rtype: int
-        """
-        return self.__create_at
-
-    def set_create_at(self, create_at):
-        """
-        作成日時(エポック秒)を設定
-        :param create_at: 作成日時(エポック秒)
-        :type create_at: int
-        """
-        self.__create_at = create_at
-
     def get_meta(self):
         """
         メッセージメタデータを取得
@@ -95,27 +95,27 @@ class Message(object):
         """
         self.__meta = meta
 
-    def get_message_id(self):
+    def get_create_at(self):
         """
-        メッセージIDを取得
-        :return: メッセージID
-        :rtype: unicode
+        作成日時(エポック秒)を取得
+        :return: 作成日時(エポック秒)
+        :rtype: int
         """
-        return self.__message_id
+        return self.__create_at
 
-    def set_message_id(self, message_id):
+    def set_create_at(self, create_at):
         """
-        メッセージIDを設定
-        :param message_id: メッセージID
-        :type message_id: unicode
+        作成日時(エポック秒)を設定
+        :param create_at: 作成日時(エポック秒)
+        :type create_at: int
         """
-        self.__message_id = message_id
+        self.__create_at = create_at
 
     def to_dict(self):
         return { 
+            "messageId": self.__message_id,
             "userId": self.__user_id,
             "message": self.__message,
-            "createAt": self.__create_at,
             "meta": self.__meta,
-            "messageId": self.__message_id,
+            "createAt": self.__create_at,
         }

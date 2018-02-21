@@ -34,14 +34,14 @@ class SendMessageRequest(Gs2UserRequest):
             self.__lobby_name = None
             self.__room_id = None
             self.__message = None
-            self.__password = None
             self.__meta = None
+            self.__password = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
             self.set_message(params['message'] if 'message' in params.keys() else None)
-            self.set_password(params['password'] if 'password' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
+            self.set_password(params['password'] if 'password' in params.keys() else None)
 
     def get_lobby_name(self):
         """
@@ -130,35 +130,6 @@ class SendMessageRequest(Gs2UserRequest):
         self.set_message(message)
         return self
 
-    def get_password(self):
-        """
-        パスワードを取得
-        :return: パスワード
-        :rtype: unicode
-        """
-        return self.__password
-
-    def set_password(self, password):
-        """
-        パスワードを設定
-        :param password: パスワード
-        :type password: unicode
-        """
-        if not isinstance(password, unicode):
-            raise TypeError(type(password))
-        self.__password = password
-
-    def with_password(self, password):
-        """
-        パスワードを設定
-        :param password: パスワード
-        :type password: unicode
-        :return: this
-        :rtype: SendMessageRequest
-        """
-        self.set_password(password)
-        return self
-
     def get_meta(self):
         """
         メッセージメタデータを取得
@@ -186,4 +157,33 @@ class SendMessageRequest(Gs2UserRequest):
         :rtype: SendMessageRequest
         """
         self.set_meta(meta)
+        return self
+
+    def get_password(self):
+        """
+        パスワードを取得
+        :return: パスワード
+        :rtype: unicode
+        """
+        return self.__password
+
+    def set_password(self, password):
+        """
+        パスワードを設定
+        :param password: パスワード
+        :type password: unicode
+        """
+        if not isinstance(password, unicode):
+            raise TypeError(type(password))
+        self.__password = password
+
+    def with_password(self, password):
+        """
+        パスワードを設定
+        :param password: パスワード
+        :type password: unicode
+        :return: this
+        :rtype: SendMessageRequest
+        """
+        self.set_password(password)
         return self

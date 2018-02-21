@@ -32,18 +32,38 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         super(UpdateLobbyRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__notification_type = None
-            self.__service_class = None
             self.__description = None
-            self.__notification_game_name = None
+            self.__service_class = None
+            self.__notification_type = None
             self.__notification_url = None
+            self.__notification_game_name = None
+            self.__create_room_trigger_script = None
+            self.__create_room_done_trigger_script = None
+            self.__delete_room_trigger_script = None
+            self.__delete_room_done_trigger_script = None
+            self.__create_subscribe_trigger_script = None
+            self.__create_subscribe_done_trigger_script = None
+            self.__delete_subscribe_trigger_script = None
+            self.__delete_subscribe_done_trigger_script = None
+            self.__send_message_trigger_script = None
+            self.__send_message_done_trigger_script = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
-            self.set_notification_type(params['notificationType'] if 'notificationType' in params.keys() else None)
-            self.set_service_class(params['serviceClass'] if 'serviceClass' in params.keys() else None)
             self.set_description(params['description'] if 'description' in params.keys() else None)
-            self.set_notification_game_name(params['notificationGameName'] if 'notificationGameName' in params.keys() else None)
+            self.set_service_class(params['serviceClass'] if 'serviceClass' in params.keys() else None)
+            self.set_notification_type(params['notificationType'] if 'notificationType' in params.keys() else None)
             self.set_notification_url(params['notificationUrl'] if 'notificationUrl' in params.keys() else None)
+            self.set_notification_game_name(params['notificationGameName'] if 'notificationGameName' in params.keys() else None)
+            self.set_create_room_trigger_script(params['createRoomTriggerScript'] if 'createRoomTriggerScript' in params.keys() else None)
+            self.set_create_room_done_trigger_script(params['createRoomDoneTriggerScript'] if 'createRoomDoneTriggerScript' in params.keys() else None)
+            self.set_delete_room_trigger_script(params['deleteRoomTriggerScript'] if 'deleteRoomTriggerScript' in params.keys() else None)
+            self.set_delete_room_done_trigger_script(params['deleteRoomDoneTriggerScript'] if 'deleteRoomDoneTriggerScript' in params.keys() else None)
+            self.set_create_subscribe_trigger_script(params['createSubscribeTriggerScript'] if 'createSubscribeTriggerScript' in params.keys() else None)
+            self.set_create_subscribe_done_trigger_script(params['createSubscribeDoneTriggerScript'] if 'createSubscribeDoneTriggerScript' in params.keys() else None)
+            self.set_delete_subscribe_trigger_script(params['deleteSubscribeTriggerScript'] if 'deleteSubscribeTriggerScript' in params.keys() else None)
+            self.set_delete_subscribe_done_trigger_script(params['deleteSubscribeDoneTriggerScript'] if 'deleteSubscribeDoneTriggerScript' in params.keys() else None)
+            self.set_send_message_trigger_script(params['sendMessageTriggerScript'] if 'sendMessageTriggerScript' in params.keys() else None)
+            self.set_send_message_done_trigger_script(params['sendMessageDoneTriggerScript'] if 'sendMessageDoneTriggerScript' in params.keys() else None)
 
     def get_lobby_name(self):
         """
@@ -70,60 +90,6 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :rtype: UpdateLobbyRequest
         """
         self.set_lobby_name(lobby_name)
-        return self
-
-    def get_notification_type(self):
-        """
-        通知方式を取得
-        :return: 通知方式
-        :rtype: unicode
-        """
-        return self.__notification_type
-
-    def set_notification_type(self, notification_type):
-        """
-        通知方式を設定
-        :param notification_type: 通知方式
-        :type notification_type: unicode
-        """
-        self.__notification_type = notification_type
-
-    def with_notification_type(self, notification_type):
-        """
-        通知方式を設定
-        :param notification_type: 通知方式
-        :type notification_type: unicode
-        :return: this
-        :rtype: UpdateLobbyRequest
-        """
-        self.set_notification_type(notification_type)
-        return self
-
-    def get_service_class(self):
-        """
-        サービスクラスを取得
-        :return: サービスクラス
-        :rtype: unicode
-        """
-        return self.__service_class
-
-    def set_service_class(self, service_class):
-        """
-        サービスクラスを設定
-        :param service_class: サービスクラス
-        :type service_class: unicode
-        """
-        self.__service_class = service_class
-
-    def with_service_class(self, service_class):
-        """
-        サービスクラスを設定
-        :param service_class: サービスクラス
-        :type service_class: unicode
-        :return: this
-        :rtype: UpdateLobbyRequest
-        """
-        self.set_service_class(service_class)
         return self
 
     def get_description(self):
@@ -153,31 +119,58 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         self.set_description(description)
         return self
 
-    def get_notification_game_name(self):
+    def get_service_class(self):
         """
-        通知先 GS2-InGamePushNotification の ゲーム名を取得
-        :return: 通知先 GS2-InGamePushNotification の ゲーム名
+        サービスクラスを取得
+        :return: サービスクラス
         :rtype: unicode
         """
-        return self.__notification_game_name
+        return self.__service_class
 
-    def set_notification_game_name(self, notification_game_name):
+    def set_service_class(self, service_class):
         """
-        通知先 GS2-InGamePushNotification の ゲーム名を設定
-        :param notification_game_name: 通知先 GS2-InGamePushNotification の ゲーム名
-        :type notification_game_name: unicode
+        サービスクラスを設定
+        :param service_class: サービスクラス
+        :type service_class: unicode
         """
-        self.__notification_game_name = notification_game_name
+        self.__service_class = service_class
 
-    def with_notification_game_name(self, notification_game_name):
+    def with_service_class(self, service_class):
         """
-        通知先 GS2-InGamePushNotification の ゲーム名を設定
-        :param notification_game_name: 通知先 GS2-InGamePushNotification の ゲーム名
-        :type notification_game_name: unicode
+        サービスクラスを設定
+        :param service_class: サービスクラス
+        :type service_class: unicode
         :return: this
         :rtype: UpdateLobbyRequest
         """
-        self.set_notification_game_name(notification_game_name)
+        self.set_service_class(service_class)
+        return self
+
+    def get_notification_type(self):
+        """
+        通知方式を取得
+        :return: 通知方式
+        :rtype: unicode
+        """
+        return self.__notification_type
+
+    def set_notification_type(self, notification_type):
+        """
+        通知方式を設定
+        :param notification_type: 通知方式
+        :type notification_type: unicode
+        """
+        self.__notification_type = notification_type
+
+    def with_notification_type(self, notification_type):
+        """
+        通知方式を設定
+        :param notification_type: 通知方式
+        :type notification_type: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_notification_type(notification_type)
         return self
 
     def get_notification_url(self):
@@ -205,4 +198,301 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :rtype: UpdateLobbyRequest
         """
         self.set_notification_url(notification_url)
+        return self
+
+    def get_notification_game_name(self):
+        """
+        通知先 GS2-InGamePushNotification の ゲーム名を取得
+        :return: 通知先 GS2-InGamePushNotification の ゲーム名
+        :rtype: unicode
+        """
+        return self.__notification_game_name
+
+    def set_notification_game_name(self, notification_game_name):
+        """
+        通知先 GS2-InGamePushNotification の ゲーム名を設定
+        :param notification_game_name: 通知先 GS2-InGamePushNotification の ゲーム名
+        :type notification_game_name: unicode
+        """
+        self.__notification_game_name = notification_game_name
+
+    def with_notification_game_name(self, notification_game_name):
+        """
+        通知先 GS2-InGamePushNotification の ゲーム名を設定
+        :param notification_game_name: 通知先 GS2-InGamePushNotification の ゲーム名
+        :type notification_game_name: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_notification_game_name(notification_game_name)
+        return self
+
+    def get_create_room_trigger_script(self):
+        """
+        ルーム作成時 に実行されるGS2-Scriptを取得
+        :return: ルーム作成時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_room_trigger_script
+
+    def set_create_room_trigger_script(self, create_room_trigger_script):
+        """
+        ルーム作成時 に実行されるGS2-Scriptを設定
+        :param create_room_trigger_script: ルーム作成時 に実行されるGS2-Script
+        :type create_room_trigger_script: unicode
+        """
+        self.__create_room_trigger_script = create_room_trigger_script
+
+    def with_create_room_trigger_script(self, create_room_trigger_script):
+        """
+        ルーム作成時 に実行されるGS2-Scriptを設定
+        :param create_room_trigger_script: ルーム作成時 に実行されるGS2-Script
+        :type create_room_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_create_room_trigger_script(create_room_trigger_script)
+        return self
+
+    def get_create_room_done_trigger_script(self):
+        """
+        ルーム作成完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム作成完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_room_done_trigger_script
+
+    def set_create_room_done_trigger_script(self, create_room_done_trigger_script):
+        """
+        ルーム作成完了時 に実行されるGS2-Scriptを設定
+        :param create_room_done_trigger_script: ルーム作成完了時 に実行されるGS2-Script
+        :type create_room_done_trigger_script: unicode
+        """
+        self.__create_room_done_trigger_script = create_room_done_trigger_script
+
+    def with_create_room_done_trigger_script(self, create_room_done_trigger_script):
+        """
+        ルーム作成完了時 に実行されるGS2-Scriptを設定
+        :param create_room_done_trigger_script: ルーム作成完了時 に実行されるGS2-Script
+        :type create_room_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_create_room_done_trigger_script(create_room_done_trigger_script)
+        return self
+
+    def get_delete_room_trigger_script(self):
+        """
+        ルーム削除時 に実行されるGS2-Scriptを取得
+        :return: ルーム削除時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_room_trigger_script
+
+    def set_delete_room_trigger_script(self, delete_room_trigger_script):
+        """
+        ルーム削除時 に実行されるGS2-Scriptを設定
+        :param delete_room_trigger_script: ルーム削除時 に実行されるGS2-Script
+        :type delete_room_trigger_script: unicode
+        """
+        self.__delete_room_trigger_script = delete_room_trigger_script
+
+    def with_delete_room_trigger_script(self, delete_room_trigger_script):
+        """
+        ルーム削除時 に実行されるGS2-Scriptを設定
+        :param delete_room_trigger_script: ルーム削除時 に実行されるGS2-Script
+        :type delete_room_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_delete_room_trigger_script(delete_room_trigger_script)
+        return self
+
+    def get_delete_room_done_trigger_script(self):
+        """
+        ルーム削除完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム削除完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_room_done_trigger_script
+
+    def set_delete_room_done_trigger_script(self, delete_room_done_trigger_script):
+        """
+        ルーム削除完了時 に実行されるGS2-Scriptを設定
+        :param delete_room_done_trigger_script: ルーム削除完了時 に実行されるGS2-Script
+        :type delete_room_done_trigger_script: unicode
+        """
+        self.__delete_room_done_trigger_script = delete_room_done_trigger_script
+
+    def with_delete_room_done_trigger_script(self, delete_room_done_trigger_script):
+        """
+        ルーム削除完了時 に実行されるGS2-Scriptを設定
+        :param delete_room_done_trigger_script: ルーム削除完了時 に実行されるGS2-Script
+        :type delete_room_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_delete_room_done_trigger_script(delete_room_done_trigger_script)
+        return self
+
+    def get_create_subscribe_trigger_script(self):
+        """
+        ルーム購読時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_subscribe_trigger_script
+
+    def set_create_subscribe_trigger_script(self, create_subscribe_trigger_script):
+        """
+        ルーム購読時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_trigger_script: ルーム購読時 に実行されるGS2-Script
+        :type create_subscribe_trigger_script: unicode
+        """
+        self.__create_subscribe_trigger_script = create_subscribe_trigger_script
+
+    def with_create_subscribe_trigger_script(self, create_subscribe_trigger_script):
+        """
+        ルーム購読時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_trigger_script: ルーム購読時 に実行されるGS2-Script
+        :type create_subscribe_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_create_subscribe_trigger_script(create_subscribe_trigger_script)
+        return self
+
+    def get_create_subscribe_done_trigger_script(self):
+        """
+        ルーム購読完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__create_subscribe_done_trigger_script
+
+    def set_create_subscribe_done_trigger_script(self, create_subscribe_done_trigger_script):
+        """
+        ルーム購読完了時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_done_trigger_script: ルーム購読完了時 に実行されるGS2-Script
+        :type create_subscribe_done_trigger_script: unicode
+        """
+        self.__create_subscribe_done_trigger_script = create_subscribe_done_trigger_script
+
+    def with_create_subscribe_done_trigger_script(self, create_subscribe_done_trigger_script):
+        """
+        ルーム購読完了時 に実行されるGS2-Scriptを設定
+        :param create_subscribe_done_trigger_script: ルーム購読完了時 に実行されるGS2-Script
+        :type create_subscribe_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_create_subscribe_done_trigger_script(create_subscribe_done_trigger_script)
+        return self
+
+    def get_delete_subscribe_trigger_script(self):
+        """
+        ルーム購読解除時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読解除時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_subscribe_trigger_script
+
+    def set_delete_subscribe_trigger_script(self, delete_subscribe_trigger_script):
+        """
+        ルーム購読解除時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_trigger_script: ルーム購読解除時 に実行されるGS2-Script
+        :type delete_subscribe_trigger_script: unicode
+        """
+        self.__delete_subscribe_trigger_script = delete_subscribe_trigger_script
+
+    def with_delete_subscribe_trigger_script(self, delete_subscribe_trigger_script):
+        """
+        ルーム購読解除時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_trigger_script: ルーム購読解除時 に実行されるGS2-Script
+        :type delete_subscribe_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_delete_subscribe_trigger_script(delete_subscribe_trigger_script)
+        return self
+
+    def get_delete_subscribe_done_trigger_script(self):
+        """
+        ルーム購読解除完了時 に実行されるGS2-Scriptを取得
+        :return: ルーム購読解除完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__delete_subscribe_done_trigger_script
+
+    def set_delete_subscribe_done_trigger_script(self, delete_subscribe_done_trigger_script):
+        """
+        ルーム購読解除完了時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_done_trigger_script: ルーム購読解除完了時 に実行されるGS2-Script
+        :type delete_subscribe_done_trigger_script: unicode
+        """
+        self.__delete_subscribe_done_trigger_script = delete_subscribe_done_trigger_script
+
+    def with_delete_subscribe_done_trigger_script(self, delete_subscribe_done_trigger_script):
+        """
+        ルーム購読解除完了時 に実行されるGS2-Scriptを設定
+        :param delete_subscribe_done_trigger_script: ルーム購読解除完了時 に実行されるGS2-Script
+        :type delete_subscribe_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_delete_subscribe_done_trigger_script(delete_subscribe_done_trigger_script)
+        return self
+
+    def get_send_message_trigger_script(self):
+        """
+        メッセージ送信時 に実行されるGS2-Scriptを取得
+        :return: メッセージ送信時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__send_message_trigger_script
+
+    def set_send_message_trigger_script(self, send_message_trigger_script):
+        """
+        メッセージ送信時 に実行されるGS2-Scriptを設定
+        :param send_message_trigger_script: メッセージ送信時 に実行されるGS2-Script
+        :type send_message_trigger_script: unicode
+        """
+        self.__send_message_trigger_script = send_message_trigger_script
+
+    def with_send_message_trigger_script(self, send_message_trigger_script):
+        """
+        メッセージ送信時 に実行されるGS2-Scriptを設定
+        :param send_message_trigger_script: メッセージ送信時 に実行されるGS2-Script
+        :type send_message_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_send_message_trigger_script(send_message_trigger_script)
+        return self
+
+    def get_send_message_done_trigger_script(self):
+        """
+        メッセージ送信完了時 に実行されるGS2-Scriptを取得
+        :return: メッセージ送信完了時 に実行されるGS2-Script
+        :rtype: unicode
+        """
+        return self.__send_message_done_trigger_script
+
+    def set_send_message_done_trigger_script(self, send_message_done_trigger_script):
+        """
+        メッセージ送信完了時 に実行されるGS2-Scriptを設定
+        :param send_message_done_trigger_script: メッセージ送信完了時 に実行されるGS2-Script
+        :type send_message_done_trigger_script: unicode
+        """
+        self.__send_message_done_trigger_script = send_message_done_trigger_script
+
+    def with_send_message_done_trigger_script(self, send_message_done_trigger_script):
+        """
+        メッセージ送信完了時 に実行されるGS2-Scriptを設定
+        :param send_message_done_trigger_script: メッセージ送信完了時 に実行されるGS2-Script
+        :type send_message_done_trigger_script: unicode
+        :return: this
+        :rtype: UpdateLobbyRequest
+        """
+        self.set_send_message_done_trigger_script(send_message_done_trigger_script)
         return self

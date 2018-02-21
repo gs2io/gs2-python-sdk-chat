@@ -26,8 +26,6 @@ class SearchLogByRoomResult(object):
         :type response: dict
         """
         
-        self.__next_page_token = unicode(response['nextPageToken']) if 'nextPageToken' in response.keys() and response['nextPageToken'] is not None else None
-        
         self.__items = list(
             map(
                 lambda data:
@@ -37,15 +35,9 @@ class SearchLogByRoomResult(object):
             )
         )
         
+        self.__next_page_token = unicode(response['nextPageToken']) if 'nextPageToken' in response.keys() and response['nextPageToken'] is not None else None
+        
         self.__scan_size = int(response['scanSize']) if 'scanSize' in response.keys() and response['scanSize'] is not None else None
-
-    def get_next_page_token(self):
-        """
-        次のページを読み込むためのトークンを取得
-        :return: 次のページを読み込むためのトークン
-        :rtype: unicode
-        """
-        return self.__next_page_token
 
     def get_items(self):
         """
@@ -54,6 +46,14 @@ class SearchLogByRoomResult(object):
         :rtype: list[MessageLog]
         """
         return self.__items
+
+    def get_next_page_token(self):
+        """
+        次のページを読み込むためのトークンを取得
+        :return: 次のページを読み込むためのトークン
+        :rtype: unicode
+        """
+        return self.__next_page_token
 
     def get_scan_size(self):
         """
@@ -70,9 +70,9 @@ class SearchLogByRoomResult(object):
         :rtype: dict
         """
         return { 
-            'nextPageToken': self.__next_page_token,
-        
             'items': map(lambda item: item.to_dict(), self.__items),
+        
+            'nextPageToken': self.__next_page_token,
         
             'scanSize': self.__scan_size,
         

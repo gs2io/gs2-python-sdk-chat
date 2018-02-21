@@ -34,14 +34,14 @@ class CreateMySubscribeRequest(Gs2UserRequest):
             self.__lobby_name = None
             self.__room_id = None
             self.__enable_offline_transfer = None
-            self.__password = None
             self.__offline_transfer_sound = None
+            self.__password = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
             self.set_enable_offline_transfer(params['enableOfflineTransfer'] if 'enableOfflineTransfer' in params.keys() else None)
-            self.set_password(params['password'] if 'password' in params.keys() else None)
             self.set_offline_transfer_sound(params['offlineTransferSound'] if 'offlineTransferSound' in params.keys() else None)
+            self.set_password(params['password'] if 'password' in params.keys() else None)
 
     def get_lobby_name(self):
         """
@@ -130,35 +130,6 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         self.set_enable_offline_transfer(enable_offline_transfer)
         return self
 
-    def get_password(self):
-        """
-        パスワードを取得
-        :return: パスワード
-        :rtype: unicode
-        """
-        return self.__password
-
-    def set_password(self, password):
-        """
-        パスワードを設定
-        :param password: パスワード
-        :type password: unicode
-        """
-        if not isinstance(password, unicode):
-            raise TypeError(type(password))
-        self.__password = password
-
-    def with_password(self, password):
-        """
-        パスワードを設定
-        :param password: パスワード
-        :type password: unicode
-        :return: this
-        :rtype: CreateMySubscribeRequest
-        """
-        self.set_password(password)
-        return self
-
     def get_offline_transfer_sound(self):
         """
         GS2-InGamePushNotification 使用時のモバイルプッシュ通知で使用する通知音を取得
@@ -186,4 +157,33 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :rtype: CreateMySubscribeRequest
         """
         self.set_offline_transfer_sound(offline_transfer_sound)
+        return self
+
+    def get_password(self):
+        """
+        パスワードを取得
+        :return: パスワード
+        :rtype: unicode
+        """
+        return self.__password
+
+    def set_password(self, password):
+        """
+        パスワードを設定
+        :param password: パスワード
+        :type password: unicode
+        """
+        if not isinstance(password, unicode):
+            raise TypeError(type(password))
+        self.__password = password
+
+    def with_password(self, password):
+        """
+        パスワードを設定
+        :param password: パスワード
+        :type password: unicode
+        :return: this
+        :rtype: CreateMySubscribeRequest
+        """
+        self.set_password(password)
         return self
