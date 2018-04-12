@@ -25,12 +25,10 @@ class DescribeMessageNoAuthResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__items = list(
             map(
                 lambda data:
-                Message(data)
-                ,
+                Message(data),
                 response['items']
             )
         )
@@ -49,7 +47,6 @@ class DescribeMessageNoAuthResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'items': map(lambda item: item.to_dict(), self.__items),
-        
         }

@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Room(object):
 
     def __init__(self, params=None):
@@ -27,7 +28,6 @@ class Room(object):
             self.set_allow_user_ids(params['allowUserIds'] if 'allowUserIds' in params.keys() else None)
             self.set_need_password(params['needPassword'] if 'needPassword' in params.keys() else None)
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
-
 
     def get_room_id(self):
         """
@@ -94,7 +94,7 @@ class Room(object):
         self.__create_at = create_at
 
     def to_dict(self):
-        return { 
+        return {
             "roomId": self.__room_id,
             "allowUserIds": self.__allow_user_ids,
             "needPassword": self.__need_password,

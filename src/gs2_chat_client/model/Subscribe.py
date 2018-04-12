@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Subscribe(object):
 
     def __init__(self, params=None):
@@ -29,7 +30,6 @@ class Subscribe(object):
             self.set_enable_offline_transfer(params['enableOfflineTransfer'] if 'enableOfflineTransfer' in params.keys() else None)
             self.set_offline_transfer_sound(params['offlineTransferSound'] if 'offlineTransferSound' in params.keys() else None)
             self.set_subscribe_at(params['subscribeAt'] if 'subscribeAt' in params.keys() else None)
-
 
     def get_room_id(self):
         """
@@ -112,7 +112,7 @@ class Subscribe(object):
         self.__subscribe_at = subscribe_at
 
     def to_dict(self):
-        return { 
+        return {
             "roomId": self.__room_id,
             "userId": self.__user_id,
             "enableOfflineTransfer": self.__enable_offline_transfer,

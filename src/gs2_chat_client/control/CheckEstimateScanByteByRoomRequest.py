@@ -32,23 +32,39 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         super(CheckEstimateScanByteByRoomRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__room_id = None
-            self.__user_id = None
-            self.__message = None
-            self.__meta = None
-            self.__begin = None
-            self.__end = None
-            self.__page_token = None
-            self.__limit = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__room_id = None
+        else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__message = None
+        else:
             self.set_message(params['message'] if 'message' in params.keys() else None)
+        if params is None:
+            self.__meta = None
+        else:
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
+        if params is None:
+            self.__begin = None
+        else:
             self.set_begin(params['begin'] if 'begin' in params.keys() else None)
+        if params is None:
+            self.__end = None
+        else:
             self.set_end(params['end'] if 'end' in params.keys() else None)
+        if params is None:
+            self.__page_token = None
+        else:
             self.set_page_token(params['pageToken'] if 'pageToken' in params.keys() else None)
+        if params is None:
+            self.__limit = None
+        else:
             self.set_limit(params['limit'] if 'limit' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -65,6 +81,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -92,6 +110,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
+        if not isinstance(room_id, unicode):
+            raise TypeError(type(room_id))
         self.__room_id = room_id
 
     def with_room_id(self, room_id):
@@ -119,6 +139,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param user_id: 検索するユーザID文字列(部分一致)
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -146,6 +168,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param message: 検索するメッセージテキスト文字列(部分一致)
         :type message: unicode
         """
+        if not isinstance(message, unicode):
+            raise TypeError(type(message))
         self.__message = message
 
     def with_message(self, message):
@@ -173,6 +197,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param meta: 検索するメッセージメタデータ文字列(部分一致)
         :type meta: unicode
         """
+        if not isinstance(meta, unicode):
+            raise TypeError(type(meta))
         self.__meta = meta
 
     def with_meta(self, meta):
@@ -200,6 +226,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param begin: 検索期間 開始日時（エポック秒）
         :type begin: int
         """
+        if not isinstance(begin, int):
+            raise TypeError(type(begin))
         self.__begin = begin
 
     def with_begin(self, begin):
@@ -227,6 +255,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param end: 検索期間 終了日時（エポック秒）
         :type end: int
         """
+        if not isinstance(end, int):
+            raise TypeError(type(end))
         self.__end = end
 
     def with_end(self, end):
@@ -254,6 +284,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
+        if not isinstance(page_token, unicode):
+            raise TypeError(type(page_token))
         self.__page_token = page_token
 
     def with_page_token(self, page_token):
@@ -281,6 +313,8 @@ class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
+        if not isinstance(limit, int):
+            raise TypeError(type(limit))
         self.__limit = limit
 
     def with_limit(self, limit):

@@ -32,9 +32,11 @@ class GetRoomRequest(Gs2BasicRequest):
         super(GetRoomRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__room_id = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__room_id = None
+        else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -51,6 +53,8 @@ class GetRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -78,6 +82,8 @@ class GetRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
+        if not isinstance(room_id, unicode):
+            raise TypeError(type(room_id))
         self.__room_id = room_id
 
     def with_room_id(self, room_id):

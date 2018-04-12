@@ -32,13 +32,19 @@ class CreateRoomRequest(Gs2BasicRequest):
         super(CreateRoomRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__room_id = None
-            self.__allow_user_ids = None
-            self.__password = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__room_id = None
+        else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
+        if params is None:
+            self.__allow_user_ids = None
+        else:
             self.set_allow_user_ids(params['allowUserIds'] if 'allowUserIds' in params.keys() else None)
+        if params is None:
+            self.__password = None
+        else:
             self.set_password(params['password'] if 'password' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -55,6 +61,8 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -82,6 +90,8 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID（指定しない場合は自動的に採番されます）
         :type room_id: unicode
         """
+        if not isinstance(room_id, unicode):
+            raise TypeError(type(room_id))
         self.__room_id = room_id
 
     def with_room_id(self, room_id):
@@ -109,6 +119,8 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定
         :type allow_user_ids: unicode
         """
+        if not isinstance(allow_user_ids, unicode):
+            raise TypeError(type(allow_user_ids))
         self.__allow_user_ids = allow_user_ids
 
     def with_allow_user_ids(self, allow_user_ids):
@@ -136,6 +148,8 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
         :type password: unicode
         """
+        if not isinstance(password, unicode):
+            raise TypeError(type(password))
         self.__password = password
 
     def with_password(self, password):

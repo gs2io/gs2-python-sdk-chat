@@ -32,13 +32,19 @@ class DescribeSubscribeByUserIdRequest(Gs2BasicRequest):
         super(DescribeSubscribeByUserIdRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__user_id = None
-            self.__page_token = None
-            self.__limit = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__page_token = None
+        else:
             self.set_page_token(params['pageToken'] if 'pageToken' in params.keys() else None)
+        if params is None:
+            self.__limit = None
+        else:
             self.set_limit(params['limit'] if 'limit' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -55,6 +61,8 @@ class DescribeSubscribeByUserIdRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -82,6 +90,8 @@ class DescribeSubscribeByUserIdRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -109,6 +119,8 @@ class DescribeSubscribeByUserIdRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
+        if not isinstance(page_token, unicode):
+            raise TypeError(type(page_token))
         self.__page_token = page_token
 
     def with_page_token(self, page_token):
@@ -136,6 +148,8 @@ class DescribeSubscribeByUserIdRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
+        if not isinstance(limit, int):
+            raise TypeError(type(limit))
         self.__limit = limit
 
     def with_limit(self, limit):

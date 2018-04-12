@@ -49,6 +49,8 @@ class GetLobbyRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):

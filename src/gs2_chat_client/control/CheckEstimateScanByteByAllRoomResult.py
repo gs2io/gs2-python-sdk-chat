@@ -25,14 +25,13 @@ class CheckEstimateScanByteByAllRoomResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
-        self.__scan_size = int(response['scanSize']) if 'scanSize' in response.keys() and response['scanSize'] is not None else None
+        self.__scan_size = long(response['scanSize']) if 'scanSize' in response.keys() and response['scanSize'] is not None else None
 
     def get_scan_size(self):
         """
         予想されるスキャンサイズを取得
         :return: 予想されるスキャンサイズ
-        :rtype: int
+        :rtype: long
         """
         return self.__scan_size
 
@@ -42,7 +41,6 @@ class CheckEstimateScanByteByAllRoomResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'scanSize': self.__scan_size,
-        
         }

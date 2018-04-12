@@ -32,15 +32,23 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         super(SendMessageNoAuthRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__room_id = None
-            self.__user_id = None
-            self.__message = None
-            self.__meta = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__room_id = None
+        else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__message = None
+        else:
             self.set_message(params['message'] if 'message' in params.keys() else None)
+        if params is None:
+            self.__meta = None
+        else:
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -57,6 +65,8 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -84,6 +94,8 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
+        if not isinstance(room_id, unicode):
+            raise TypeError(type(room_id))
         self.__room_id = room_id
 
     def with_room_id(self, room_id):
@@ -111,6 +123,8 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -138,6 +152,8 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param message: メッセージテキスト
         :type message: unicode
         """
+        if not isinstance(message, unicode):
+            raise TypeError(type(message))
         self.__message = message
 
     def with_message(self, message):
@@ -165,6 +181,8 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param meta: メッセージメタデータ
         :type meta: unicode
         """
+        if not isinstance(meta, unicode):
+            raise TypeError(type(meta))
         self.__meta = meta
 
     def with_meta(self, meta):

@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Message(object):
 
     def __init__(self, params=None):
@@ -29,7 +30,6 @@ class Message(object):
             self.set_message(params['message'] if 'message' in params.keys() else None)
             self.set_meta(params['meta'] if 'meta' in params.keys() else None)
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
-
 
     def get_message_id(self):
         """
@@ -112,7 +112,7 @@ class Message(object):
         self.__create_at = create_at
 
     def to_dict(self):
-        return { 
+        return {
             "messageId": self.__message_id,
             "userId": self.__user_id,
             "message": self.__message,

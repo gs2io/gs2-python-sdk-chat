@@ -14,6 +14,7 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
+
 class Lobby(object):
 
     def __init__(self, params=None):
@@ -26,6 +27,8 @@ class Lobby(object):
             self.__notification_type = None
             self.__notification_url = None
             self.__notification_game_name = None
+            self.__logging = None
+            self.__logging_date = None
             self.__create_room_trigger_script = None
             self.__create_room_done_trigger_script = None
             self.__delete_room_trigger_script = None
@@ -47,6 +50,8 @@ class Lobby(object):
             self.set_notification_type(params['notificationType'] if 'notificationType' in params.keys() else None)
             self.set_notification_url(params['notificationUrl'] if 'notificationUrl' in params.keys() else None)
             self.set_notification_game_name(params['notificationGameName'] if 'notificationGameName' in params.keys() else None)
+            self.set_logging(params['logging'] if 'logging' in params.keys() else None)
+            self.set_logging_date(params['loggingDate'] if 'loggingDate' in params.keys() else None)
             self.set_create_room_trigger_script(params['createRoomTriggerScript'] if 'createRoomTriggerScript' in params.keys() else None)
             self.set_create_room_done_trigger_script(params['createRoomDoneTriggerScript'] if 'createRoomDoneTriggerScript' in params.keys() else None)
             self.set_delete_room_trigger_script(params['deleteRoomTriggerScript'] if 'deleteRoomTriggerScript' in params.keys() else None)
@@ -60,19 +65,18 @@ class Lobby(object):
             self.set_create_at(params['createAt'] if 'createAt' in params.keys() else None)
             self.set_update_at(params['updateAt'] if 'updateAt' in params.keys() else None)
 
-
     def get_lobby_id(self):
         """
-        ロビーIDを取得
-        :return: ロビーID
+        ロビーGRNを取得
+        :return: ロビーGRN
         :rtype: unicode
         """
         return self.__lobby_id
 
     def set_lobby_id(self, lobby_id):
         """
-        ロビーIDを設定
-        :param lobby_id: ロビーID
+        ロビーGRNを設定
+        :param lobby_id: ロビーGRN
         :type lobby_id: unicode
         """
         self.__lobby_id = lobby_id
@@ -175,19 +179,51 @@ class Lobby(object):
 
     def get_notification_game_name(self):
         """
-        gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲームGRNを取得
-        :return: gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲームGRN
+        gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲーム名を取得
+        :return: gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲーム名
         :rtype: unicode
         """
         return self.__notification_game_name
 
     def set_notification_game_name(self, notification_game_name):
         """
-        gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲームGRNを設定
-        :param notification_game_name: gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲームGRN
+        gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲーム名を設定
+        :param notification_game_name: gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲーム名
         :type notification_game_name: unicode
         """
         self.__notification_game_name = notification_game_name
+
+    def get_logging(self):
+        """
+        ログを記録するかを取得
+        :return: ログを記録するか
+        :rtype: bool
+        """
+        return self.__logging
+
+    def set_logging(self, logging):
+        """
+        ログを記録するかを設定
+        :param logging: ログを記録するか
+        :type logging: bool
+        """
+        self.__logging = logging
+
+    def get_logging_date(self):
+        """
+        ログを記録する日数を取得
+        :return: ログを記録する日数
+        :rtype: int
+        """
+        return self.__logging_date
+
+    def set_logging_date(self, logging_date):
+        """
+        ログを記録する日数を設定
+        :param logging_date: ログを記録する日数
+        :type logging_date: int
+        """
+        self.__logging_date = logging_date
 
     def get_create_room_trigger_script(self):
         """
@@ -382,7 +418,7 @@ class Lobby(object):
         self.__update_at = update_at
 
     def to_dict(self):
-        return { 
+        return {
             "lobbyId": self.__lobby_id,
             "ownerId": self.__owner_id,
             "name": self.__name,
@@ -391,6 +427,8 @@ class Lobby(object):
             "notificationType": self.__notification_type,
             "notificationUrl": self.__notification_url,
             "notificationGameName": self.__notification_game_name,
+            "logging": self.__logging,
+            "loggingDate": self.__logging_date,
             "createRoomTriggerScript": self.__create_room_trigger_script,
             "createRoomDoneTriggerScript": self.__create_room_done_trigger_script,
             "deleteRoomTriggerScript": self.__delete_room_trigger_script,

@@ -32,17 +32,27 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         super(CreateSubscribeRequest, self).__init__(params)
         if params is None:
             self.__lobby_name = None
-            self.__room_id = None
-            self.__user_id = None
-            self.__enable_offline_transfer = None
-            self.__offline_transfer_sound = None
-            self.__password = None
         else:
             self.set_lobby_name(params['lobbyName'] if 'lobbyName' in params.keys() else None)
+        if params is None:
+            self.__room_id = None
+        else:
             self.set_room_id(params['roomId'] if 'roomId' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__enable_offline_transfer = None
+        else:
             self.set_enable_offline_transfer(params['enableOfflineTransfer'] if 'enableOfflineTransfer' in params.keys() else None)
+        if params is None:
+            self.__offline_transfer_sound = None
+        else:
             self.set_offline_transfer_sound(params['offlineTransferSound'] if 'offlineTransferSound' in params.keys() else None)
+        if params is None:
+            self.__password = None
+        else:
             self.set_password(params['password'] if 'password' in params.keys() else None)
 
     def get_lobby_name(self):
@@ -59,6 +69,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
+        if not isinstance(lobby_name, unicode):
+            raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
     def with_lobby_name(self, lobby_name):
@@ -86,6 +98,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
+        if not isinstance(room_id, unicode):
+            raise TypeError(type(room_id))
         self.__room_id = room_id
 
     def with_room_id(self, room_id):
@@ -113,6 +127,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -140,6 +156,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param enable_offline_transfer: GS2-InGamePushNotification 使用時にオフライン転送を使用するか
         :type enable_offline_transfer: bool
         """
+        if not isinstance(enable_offline_transfer, bool):
+            raise TypeError(type(enable_offline_transfer))
         self.__enable_offline_transfer = enable_offline_transfer
 
     def with_enable_offline_transfer(self, enable_offline_transfer):
@@ -167,6 +185,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param offline_transfer_sound: GS2-InGamePushNotification 使用時のモバイルプッシュ通知で使用する通知音
         :type offline_transfer_sound: unicode
         """
+        if not isinstance(offline_transfer_sound, unicode):
+            raise TypeError(type(offline_transfer_sound))
         self.__offline_transfer_sound = offline_transfer_sound
 
     def with_offline_transfer_sound(self, offline_transfer_sound):
@@ -194,6 +214,8 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param password: パスワード
         :type password: unicode
         """
+        if not isinstance(password, unicode):
+            raise TypeError(type(password))
         self.__password = password
 
     def with_password(self, password):
