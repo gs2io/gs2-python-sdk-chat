@@ -61,7 +61,7 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if not isinstance(lobby_name, unicode):
+        if lobby_name and not isinstance(lobby_name, unicode):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -90,7 +90,7 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID（指定しない場合は自動的に採番されます）
         :type room_id: unicode
         """
-        if not isinstance(room_id, unicode):
+        if room_id and not isinstance(room_id, unicode):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -119,7 +119,7 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定
         :type allow_user_ids: unicode
         """
-        if not isinstance(allow_user_ids, unicode):
+        if allow_user_ids and not isinstance(allow_user_ids, unicode):
             raise TypeError(type(allow_user_ids))
         self.__allow_user_ids = allow_user_ids
 
@@ -148,7 +148,7 @@ class CreateRoomRequest(Gs2BasicRequest):
         :param password: ルームにアクセスする際にパスワードを要求する場合は文字列を指定
         :type password: unicode
         """
-        if not isinstance(password, unicode):
+        if password and not isinstance(password, unicode):
             raise TypeError(type(password))
         self.__password = password
 

@@ -77,7 +77,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if not isinstance(lobby_name, unicode):
+        if lobby_name and not isinstance(lobby_name, unicode):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -106,7 +106,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param user_id: 検索するユーザID文字列(部分一致)
         :type user_id: unicode
         """
-        if not isinstance(user_id, unicode):
+        if user_id and not isinstance(user_id, unicode):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -135,7 +135,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param message: 検索するメッセージテキスト文字列(部分一致)
         :type message: unicode
         """
-        if not isinstance(message, unicode):
+        if message and not isinstance(message, unicode):
             raise TypeError(type(message))
         self.__message = message
 
@@ -164,7 +164,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param meta: 検索するメッセージメタデータ文字列(部分一致)
         :type meta: unicode
         """
-        if not isinstance(meta, unicode):
+        if meta and not isinstance(meta, unicode):
             raise TypeError(type(meta))
         self.__meta = meta
 
@@ -193,7 +193,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param begin: 検索期間 開始日時（エポック秒）
         :type begin: int
         """
-        if not isinstance(begin, int):
+        if begin and not isinstance(begin, int):
             raise TypeError(type(begin))
         self.__begin = begin
 
@@ -222,7 +222,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param end: 検索期間 終了日時（エポック秒）
         :type end: int
         """
-        if not isinstance(end, int):
+        if end and not isinstance(end, int):
             raise TypeError(type(end))
         self.__end = end
 
@@ -251,7 +251,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if not isinstance(page_token, unicode):
+        if page_token and not isinstance(page_token, unicode):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -280,7 +280,7 @@ class CheckEstimateScanByteByAllRoomRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if not isinstance(limit, int):
+        if limit and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 

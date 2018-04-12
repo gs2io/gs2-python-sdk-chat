@@ -57,7 +57,7 @@ class DescribeMessageRequest(Gs2UserRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if not isinstance(lobby_name, unicode):
+        if lobby_name and not isinstance(lobby_name, unicode):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -86,7 +86,7 @@ class DescribeMessageRequest(Gs2UserRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if not isinstance(room_id, unicode):
+        if room_id and not isinstance(room_id, unicode):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -115,7 +115,7 @@ class DescribeMessageRequest(Gs2UserRequest):
         :param password: パスワード
         :type password: unicode
         """
-        if not isinstance(password, unicode):
+        if password and not isinstance(password, unicode):
             raise TypeError(type(password))
         self.__password = password
 
@@ -144,7 +144,7 @@ class DescribeMessageRequest(Gs2UserRequest):
         :param start_at: メッセージの取得を開始する日時(エポック秒)
         :type start_at: int
         """
-        if not isinstance(start_at, int):
+        if start_at and not isinstance(start_at, int):
             raise TypeError(type(start_at))
         self.__start_at = start_at
 
@@ -173,7 +173,7 @@ class DescribeMessageRequest(Gs2UserRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if not isinstance(limit, int):
+        if limit and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 

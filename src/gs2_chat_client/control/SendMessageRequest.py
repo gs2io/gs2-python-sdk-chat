@@ -57,7 +57,7 @@ class SendMessageRequest(Gs2UserRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if not isinstance(lobby_name, unicode):
+        if lobby_name and not isinstance(lobby_name, unicode):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -86,7 +86,7 @@ class SendMessageRequest(Gs2UserRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if not isinstance(room_id, unicode):
+        if room_id and not isinstance(room_id, unicode):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -115,7 +115,7 @@ class SendMessageRequest(Gs2UserRequest):
         :param message: メッセージテキスト
         :type message: unicode
         """
-        if not isinstance(message, unicode):
+        if message and not isinstance(message, unicode):
             raise TypeError(type(message))
         self.__message = message
 
@@ -144,7 +144,7 @@ class SendMessageRequest(Gs2UserRequest):
         :param meta: メッセージメタデータ
         :type meta: unicode
         """
-        if not isinstance(meta, unicode):
+        if meta and not isinstance(meta, unicode):
             raise TypeError(type(meta))
         self.__meta = meta
 
@@ -173,7 +173,7 @@ class SendMessageRequest(Gs2UserRequest):
         :param password: パスワード
         :type password: unicode
         """
-        if not isinstance(password, unicode):
+        if password and not isinstance(password, unicode):
             raise TypeError(type(password))
         self.__password = password
 
