@@ -61,7 +61,7 @@ class DescribeMessageNoAuthRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not isinstance(lobby_name, unicode):
+        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -90,7 +90,7 @@ class DescribeMessageNoAuthRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not isinstance(room_id, unicode):
+        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 

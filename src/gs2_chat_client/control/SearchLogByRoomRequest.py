@@ -85,7 +85,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not isinstance(lobby_name, unicode):
+        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -114,7 +114,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not isinstance(room_id, unicode):
+        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -143,7 +143,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param user_id: 検索するユーザID文字列(部分一致)
         :type user_id: unicode
         """
-        if user_id and not isinstance(user_id, unicode):
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -172,7 +172,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param message: 検索するメッセージテキスト文字列(部分一致)
         :type message: unicode
         """
-        if message and not isinstance(message, unicode):
+        if message and not (isinstance(message, str) or isinstance(message, unicode)):
             raise TypeError(type(message))
         self.__message = message
 
@@ -201,7 +201,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param meta: 検索するメッセージメタデータ文字列(部分一致)
         :type meta: unicode
         """
-        if meta and not isinstance(meta, unicode):
+        if meta and not (isinstance(meta, str) or isinstance(meta, unicode)):
             raise TypeError(type(meta))
         self.__meta = meta
 
@@ -288,7 +288,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not isinstance(page_token, unicode):
+        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 

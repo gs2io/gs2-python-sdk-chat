@@ -57,7 +57,7 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not isinstance(lobby_name, unicode):
+        if _lobby_name and not (isinstance(_lobby_name, str) or isinstance(_lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -86,7 +86,7 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not isinstance(room_id, unicode):
+        if _room_id and not (isinstance(_room_id, str) or isinstance(_room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -115,7 +115,7 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :param enable_offline_transfer: GS2-InGamePushNotification 使用時にオフライン転送を使用するか
         :type enable_offline_transfer: bool
         """
-        if enable_offline_transfer and not isinstance(enable_offline_transfer, bool):
+        if _enable_offline_transfer and not isinstance(_enable_offline_transfer, bool):
             raise TypeError(type(enable_offline_transfer))
         self.__enable_offline_transfer = enable_offline_transfer
 
@@ -144,7 +144,7 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :param offline_transfer_sound: GS2-InGamePushNotification 使用時のモバイルプッシュ通知で使用する通知音
         :type offline_transfer_sound: unicode
         """
-        if offline_transfer_sound and not isinstance(offline_transfer_sound, unicode):
+        if _offline_transfer_sound and not (isinstance(_offline_transfer_sound, str) or isinstance(_offline_transfer_sound, unicode)):
             raise TypeError(type(offline_transfer_sound))
         self.__offline_transfer_sound = offline_transfer_sound
 
@@ -173,7 +173,7 @@ class CreateMySubscribeRequest(Gs2UserRequest):
         :param password: パスワード
         :type password: unicode
         """
-        if password and not isinstance(password, unicode):
+        if _password and not (isinstance(_password, str) or isinstance(_password, unicode)):
             raise TypeError(type(password))
         self.__password = password
 

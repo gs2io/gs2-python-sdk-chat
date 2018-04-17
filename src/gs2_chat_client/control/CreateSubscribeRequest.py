@@ -69,7 +69,7 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not isinstance(lobby_name, unicode):
+        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -98,7 +98,7 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not isinstance(room_id, unicode):
+        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -127,7 +127,7 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
-        if user_id and not isinstance(user_id, unicode):
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -185,7 +185,7 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param offline_transfer_sound: GS2-InGamePushNotification 使用時のモバイルプッシュ通知で使用する通知音
         :type offline_transfer_sound: unicode
         """
-        if offline_transfer_sound and not isinstance(offline_transfer_sound, unicode):
+        if offline_transfer_sound and not (isinstance(offline_transfer_sound, str) or isinstance(offline_transfer_sound, unicode)):
             raise TypeError(type(offline_transfer_sound))
         self.__offline_transfer_sound = offline_transfer_sound
 
@@ -214,7 +214,7 @@ class CreateSubscribeRequest(Gs2BasicRequest):
         :param password: パスワード
         :type password: unicode
         """
-        if password and not isinstance(password, unicode):
+        if password and not (isinstance(password, str) or isinstance(password, unicode)):
             raise TypeError(type(password))
         self.__password = password
 
