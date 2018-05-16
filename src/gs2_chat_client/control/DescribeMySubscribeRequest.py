@@ -53,7 +53,7 @@ class DescribeMySubscribeRequest(Gs2UserRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if _lobby_name and not (isinstance(_lobby_name, str) or isinstance(_lobby_name, unicode)):
+        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -82,7 +82,7 @@ class DescribeMySubscribeRequest(Gs2UserRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if _page_token and not (isinstance(_page_token, str) or isinstance(_page_token, unicode)):
+        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -111,7 +111,7 @@ class DescribeMySubscribeRequest(Gs2UserRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if _limit and not isinstance(_limit, int):
+        if limit and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 
