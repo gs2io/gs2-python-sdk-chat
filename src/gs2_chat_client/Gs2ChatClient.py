@@ -16,6 +16,7 @@
 
 from gs2_core_client.Gs2Constant import Gs2Constant
 from gs2_core_client.AbstractGs2Client import AbstractGs2Client
+from aws_sdk_for_serverless.common import url_encoder
 
 
 class Gs2ChatClient(AbstractGs2Client):
@@ -139,7 +140,7 @@ class Gs2ChatClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteLobbyRequest import DeleteLobbyRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
             service=self.ENDPOINT,
             component=DeleteLobbyRequest.Constant.MODULE,
             target_function=DeleteLobbyRequest.Constant.FUNCTION,
@@ -219,7 +220,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.GetLobbyResult import GetLobbyResult
         return GetLobbyResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
             service=self.ENDPOINT,
             component=GetLobbyRequest.Constant.MODULE,
             target_function=GetLobbyRequest.Constant.FUNCTION,
@@ -245,7 +246,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.GetLobbyStatusResult import GetLobbyStatusResult
         return GetLobbyStatusResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/status",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/status",
             service=self.ENDPOINT,
             component=GetLobbyStatusRequest.Constant.MODULE,
             target_function=GetLobbyStatusRequest.Constant.FUNCTION,
@@ -303,7 +304,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.UpdateLobbyRequest import UpdateLobbyRequest
         from gs2_chat_client.control.UpdateLobbyResult import UpdateLobbyResult
         return UpdateLobbyResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
             service=self.ENDPOINT,
             component=UpdateLobbyRequest.Constant.MODULE,
             target_function=UpdateLobbyRequest.Constant.FUNCTION,
@@ -341,7 +342,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.CheckEstimateScanByteByAllRoomResult import CheckEstimateScanByteByAllRoomResult
         return CheckEstimateScanByteByAllRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/log/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/log/estimate",
             service=self.ENDPOINT,
             component=CheckEstimateScanByteByAllRoomRequest.Constant.MODULE,
             target_function=CheckEstimateScanByteByAllRoomRequest.Constant.FUNCTION,
@@ -379,7 +380,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.CheckEstimateScanByteByRoomResult import CheckEstimateScanByteByRoomResult
         return CheckEstimateScanByteByRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/log/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/log/estimate",
             service=self.ENDPOINT,
             component=CheckEstimateScanByteByRoomRequest.Constant.MODULE,
             target_function=CheckEstimateScanByteByRoomRequest.Constant.FUNCTION,
@@ -429,7 +430,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.SearchLogByAllRoomResult import SearchLogByAllRoomResult
         return SearchLogByAllRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/log",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/log",
             service=self.ENDPOINT,
             component=SearchLogByAllRoomRequest.Constant.MODULE,
             target_function=SearchLogByAllRoomRequest.Constant.FUNCTION,
@@ -478,7 +479,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.SearchLogByRoomResult import SearchLogByRoomResult
         return SearchLogByRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/log",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/log",
             service=self.ENDPOINT,
             component=SearchLogByRoomRequest.Constant.MODULE,
             target_function=SearchLogByRoomRequest.Constant.FUNCTION,
@@ -508,7 +509,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeMessageResult import DescribeMessageResult
         return DescribeMessageResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message",
             service=self.ENDPOINT,
             component=DescribeMessageRequest.Constant.MODULE,
             target_function=DescribeMessageRequest.Constant.FUNCTION,
@@ -536,7 +537,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeMessageNoAuthResult import DescribeMessageNoAuthResult
         return DescribeMessageNoAuthResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message/force",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message/force",
             service=self.ENDPOINT,
             component=DescribeMessageNoAuthRequest.Constant.MODULE,
             target_function=DescribeMessageNoAuthRequest.Constant.FUNCTION,
@@ -569,7 +570,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.SendMessageRequest import SendMessageRequest
         from gs2_chat_client.control.SendMessageResult import SendMessageResult
         return SendMessageResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message",
             service=self.ENDPOINT,
             component=SendMessageRequest.Constant.MODULE,
             target_function=SendMessageRequest.Constant.FUNCTION,
@@ -600,7 +601,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.SendMessageNoAuthRequest import SendMessageNoAuthRequest
         from gs2_chat_client.control.SendMessageNoAuthResult import SendMessageNoAuthResult
         return SendMessageNoAuthResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message/force",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message/force",
             service=self.ENDPOINT,
             component=SendMessageNoAuthRequest.Constant.MODULE,
             target_function=SendMessageNoAuthRequest.Constant.FUNCTION,
@@ -649,7 +650,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.CreateRoomRequest import CreateRoomRequest
         from gs2_chat_client.control.CreateRoomResult import CreateRoomResult
         return CreateRoomResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room",
             service=self.ENDPOINT,
             component=CreateRoomRequest.Constant.MODULE,
             target_function=CreateRoomRequest.Constant.FUNCTION,
@@ -671,7 +672,7 @@ class Gs2ChatClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteRoomRequest import DeleteRoomRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "",
             service=self.ENDPOINT,
             component=DeleteRoomRequest.Constant.MODULE,
             target_function=DeleteRoomRequest.Constant.FUNCTION,
@@ -699,7 +700,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeRoomResult import DescribeRoomResult
         return DescribeRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room",
             service=self.ENDPOINT,
             component=DescribeRoomRequest.Constant.MODULE,
             target_function=DescribeRoomRequest.Constant.FUNCTION,
@@ -725,7 +726,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.GetRoomResult import GetRoomResult
         return GetRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "",
             service=self.ENDPOINT,
             component=GetRoomRequest.Constant.MODULE,
             target_function=GetRoomRequest.Constant.FUNCTION,
@@ -762,7 +763,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.CreateMySubscribeRequest import CreateMySubscribeRequest
         from gs2_chat_client.control.CreateMySubscribeResult import CreateMySubscribeResult
         return CreateMySubscribeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=CreateMySubscribeRequest.Constant.MODULE,
             target_function=CreateMySubscribeRequest.Constant.FUNCTION,
@@ -798,7 +799,7 @@ class Gs2ChatClient(AbstractGs2Client):
         from gs2_chat_client.control.CreateSubscribeRequest import CreateSubscribeRequest
         from gs2_chat_client.control.CreateSubscribeResult import CreateSubscribeResult
         return CreateSubscribeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=CreateSubscribeRequest.Constant.MODULE,
             target_function=CreateSubscribeRequest.Constant.FUNCTION,
@@ -821,7 +822,7 @@ class Gs2ChatClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteMySubscribeRequest import DeleteMySubscribeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/self/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/self/subscribe",
             service=self.ENDPOINT,
             component=DeleteMySubscribeRequest.Constant.MODULE,
             target_function=DeleteMySubscribeRequest.Constant.FUNCTION,
@@ -843,7 +844,7 @@ class Gs2ChatClient(AbstractGs2Client):
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteSubscribeRequest import DeleteSubscribeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=DeleteSubscribeRequest.Constant.MODULE,
             target_function=DeleteSubscribeRequest.Constant.FUNCTION,
@@ -872,7 +873,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeMySubscribeResult import DescribeMySubscribeResult
         return DescribeMySubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/user/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/user/subscribe",
             service=self.ENDPOINT,
             component=DescribeMySubscribeRequest.Constant.MODULE,
             target_function=DescribeMySubscribeRequest.Constant.FUNCTION,
@@ -900,7 +901,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeSubscribeByRoomIdResult import DescribeSubscribeByRoomIdResult
         return DescribeSubscribeByRoomIdResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=DescribeSubscribeByRoomIdRequest.Constant.MODULE,
             target_function=DescribeSubscribeByRoomIdRequest.Constant.FUNCTION,
@@ -928,7 +929,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.DescribeSubscribeByUserIdResult import DescribeSubscribeByUserIdResult
         return DescribeSubscribeByUserIdResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=DescribeSubscribeByUserIdRequest.Constant.MODULE,
             target_function=DescribeSubscribeByUserIdRequest.Constant.FUNCTION,
@@ -955,7 +956,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.GetMySubscribeResult import GetMySubscribeResult
         return GetMySubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/self/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/self/subscribe",
             service=self.ENDPOINT,
             component=GetMySubscribeRequest.Constant.MODULE,
             target_function=GetMySubscribeRequest.Constant.FUNCTION,
@@ -981,7 +982,7 @@ class Gs2ChatClient(AbstractGs2Client):
 
         from gs2_chat_client.control.GetSubscribeResult import GetSubscribeResult
         return GetSubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
             service=self.ENDPOINT,
             component=GetSubscribeRequest.Constant.MODULE,
             target_function=GetSubscribeRequest.Constant.FUNCTION,
