@@ -417,6 +417,12 @@ class Lobby(object):
         """
         self.__update_at = update_at
 
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(Lobby, self).__getitem__(key)
+
     def to_dict(self):
         return {
             "lobbyId": self.__lobby_id,

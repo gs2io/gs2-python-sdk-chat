@@ -26,7 +26,6 @@ class SendMessageResult(object):
         :type response: dict
         """
         self.__item = Message(response['item']) if 'item' in response.keys() and response['item'] is not None else None
-
     def get_item(self):
         """
         メッセージを取得
@@ -34,6 +33,12 @@ class SendMessageResult(object):
         :rtype: Message
         """
         return self.__item
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(SendMessageResult, self).__getitem__(key)
 
     def to_dict(self):
         """

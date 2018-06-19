@@ -26,7 +26,6 @@ class CheckEstimateScanByteByRoomResult(object):
         :type response: dict
         """
         self.__scan_size = long(response['scanSize']) if 'scanSize' in response.keys() and response['scanSize'] is not None else None
-
     def get_scan_size(self):
         """
         予想されるスキャンサイズを取得
@@ -34,6 +33,12 @@ class CheckEstimateScanByteByRoomResult(object):
         :rtype: long
         """
         return self.__scan_size
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(CheckEstimateScanByteByRoomResult, self).__getitem__(key)
 
     def to_dict(self):
         """

@@ -34,7 +34,6 @@ class SearchLogByAllRoomResult(object):
         )
         self.__next_page_token = unicode(response['nextPageToken']) if 'nextPageToken' in response.keys() and response['nextPageToken'] is not None else None
         self.__scan_size = long(response['scanSize']) if 'scanSize' in response.keys() and response['scanSize'] is not None else None
-
     def get_items(self):
         """
         メッセージログを取得
@@ -42,7 +41,6 @@ class SearchLogByAllRoomResult(object):
         :rtype: list[MessageLog]
         """
         return self.__items
-
     def get_next_page_token(self):
         """
         次のページを読み込むためのトークンを取得
@@ -50,7 +48,6 @@ class SearchLogByAllRoomResult(object):
         :rtype: unicode
         """
         return self.__next_page_token
-
     def get_scan_size(self):
         """
         検索時にスキャンしたログデータサイズを取得
@@ -58,6 +55,12 @@ class SearchLogByAllRoomResult(object):
         :rtype: long
         """
         return self.__scan_size
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(SearchLogByAllRoomResult, self).__getitem__(key)
 
     def to_dict(self):
         """
