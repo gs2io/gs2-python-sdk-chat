@@ -21,7 +21,7 @@ from gs2_chat_client.Gs2Chat import Gs2Chat
 class CheckEstimateScanByteByRoomRequest(Gs2BasicRequest):
 
     class Constant(Gs2Chat):
-        FUNCTION = "CheckEstimateScanByte"
+        FUNCTION = "CheckEstimateScanByteByRoom"
 
     def __init__(self, params=None):
         """
