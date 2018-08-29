@@ -266,6 +266,7 @@ class Gs2ChatClient(AbstractGs2Client):
         body = { 
             "serviceClass": request.get_service_class(),
             "notificationType": request.get_notification_type(),
+            "logging": request.get_logging(),
         }
         if request.get_description() is not None:
             body["description"] = request.get_description()
@@ -273,8 +274,6 @@ class Gs2ChatClient(AbstractGs2Client):
             body["notificationUrl"] = request.get_notification_url()
         if request.get_notification_game_name() is not None:
             body["notificationGameName"] = request.get_notification_game_name()
-        if request.get_logging() is not None:
-            body["logging"] = request.get_logging()
         if request.get_logging_date() is not None:
             body["loggingDate"] = request.get_logging_date()
         if request.get_create_room_trigger_script() is not None:

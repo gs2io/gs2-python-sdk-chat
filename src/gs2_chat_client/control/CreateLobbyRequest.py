@@ -105,16 +105,16 @@ class CreateLobbyRequest(Gs2BasicRequest):
 
     def get_name(self):
         """
-        ゲーム名を取得
-        :return: ゲーム名
+        ロビー名を取得
+        :return: ロビー名
         :rtype: unicode
         """
         return self.__name
 
     def set_name(self, name):
         """
-        ゲーム名を設定
-        :param name: ゲーム名
+        ロビー名を設定
+        :param name: ロビー名
         :type name: unicode
         """
         if name and not (isinstance(name, str) or isinstance(name, unicode)):
@@ -123,8 +123,8 @@ class CreateLobbyRequest(Gs2BasicRequest):
 
     def with_name(self, name):
         """
-        ゲーム名を設定
-        :param name: ゲーム名
+        ロビー名を設定
+        :param name: ロビー名
         :type name: unicode
         :return: this
         :rtype: CreateLobbyRequest
