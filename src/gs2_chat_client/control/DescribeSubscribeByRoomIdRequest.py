@@ -61,7 +61,7 @@ class DescribeSubscribeByRoomIdRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
+        if lobby_name is not None and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -90,7 +90,7 @@ class DescribeSubscribeByRoomIdRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
+        if room_id is not None and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -119,7 +119,7 @@ class DescribeSubscribeByRoomIdRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
+        if page_token is not None and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -148,7 +148,7 @@ class DescribeSubscribeByRoomIdRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if limit and not isinstance(limit, int):
+        if limit is not None and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 

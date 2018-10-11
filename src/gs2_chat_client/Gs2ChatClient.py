@@ -111,8 +111,7 @@ class Gs2ChatClient(AbstractGs2Client):
             body["sendMessageTriggerScript"] = request.get_send_message_trigger_script()
         if request.get_send_message_done_trigger_script() is not None:
             body["sendMessageDoneTriggerScript"] = request.get_send_message_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CreateLobbyRequest import CreateLobbyRequest
@@ -134,13 +133,12 @@ class Gs2ChatClient(AbstractGs2Client):
         :type request: gs2_chat_client.control.DeleteLobbyRequest.DeleteLobbyRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteLobbyRequest import DeleteLobbyRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
             service=self.ENDPOINT,
             component=DeleteLobbyRequest.Constant.MODULE,
             target_function=DeleteLobbyRequest.Constant.FUNCTION,
@@ -156,12 +154,12 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeLobbyResult.DescribeLobbyResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeLobbyRequest import DescribeLobbyRequest
@@ -184,10 +182,8 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeServiceClassResult.DescribeServiceClassResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeServiceClassRequest import DescribeServiceClassRequest
@@ -210,17 +206,15 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.GetLobbyResult.GetLobbyResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.GetLobbyRequest import GetLobbyRequest
 
         from gs2_chat_client.control.GetLobbyResult import GetLobbyResult
         return GetLobbyResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
             service=self.ENDPOINT,
             component=GetLobbyRequest.Constant.MODULE,
             target_function=GetLobbyRequest.Constant.FUNCTION,
@@ -236,17 +230,15 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.GetLobbyStatusResult.GetLobbyStatusResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.GetLobbyStatusRequest import GetLobbyStatusRequest
 
         from gs2_chat_client.control.GetLobbyStatusResult import GetLobbyStatusResult
         return GetLobbyStatusResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/status",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/status",
             service=self.ENDPOINT,
             component=GetLobbyStatusRequest.Constant.MODULE,
             target_function=GetLobbyStatusRequest.Constant.FUNCTION,
@@ -296,14 +288,13 @@ class Gs2ChatClient(AbstractGs2Client):
             body["sendMessageTriggerScript"] = request.get_send_message_trigger_script()
         if request.get_send_message_done_trigger_script() is not None:
             body["sendMessageDoneTriggerScript"] = request.get_send_message_done_trigger_script()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.UpdateLobbyRequest import UpdateLobbyRequest
         from gs2_chat_client.control.UpdateLobbyResult import UpdateLobbyResult
         return UpdateLobbyResult(self._do_put_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "",
             service=self.ENDPOINT,
             component=UpdateLobbyRequest.Constant.MODULE,
             target_function=UpdateLobbyRequest.Constant.FUNCTION,
@@ -324,24 +315,29 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.CheckEstimateScanByteByAllRoomResult.CheckEstimateScanByteByAllRoomResult
         """
-        query_strings = {
-            'userId': request.get_user_id(),
-            'message': request.get_message(),
-            'meta': request.get_meta(),
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_user_id() is not None:
+            query_strings['userId'] = request.get_user_id()
+        if request.get_message() is not None:
+            query_strings['message'] = request.get_message()
+        if request.get_meta() is not None:
+            query_strings['meta'] = request.get_meta()
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CheckEstimateScanByteByAllRoomRequest import CheckEstimateScanByteByAllRoomRequest
 
         from gs2_chat_client.control.CheckEstimateScanByteByAllRoomResult import CheckEstimateScanByteByAllRoomResult
         return CheckEstimateScanByteByAllRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/log/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/log/estimate",
             service=self.ENDPOINT,
             component=CheckEstimateScanByteByAllRoomRequest.Constant.MODULE,
             target_function=CheckEstimateScanByteByAllRoomRequest.Constant.FUNCTION,
@@ -362,24 +358,29 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.CheckEstimateScanByteByRoomResult.CheckEstimateScanByteByRoomResult
         """
-        query_strings = {
-            'userId': request.get_user_id(),
-            'message': request.get_message(),
-            'meta': request.get_meta(),
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_user_id() is not None:
+            query_strings['userId'] = request.get_user_id()
+        if request.get_message() is not None:
+            query_strings['message'] = request.get_message()
+        if request.get_meta() is not None:
+            query_strings['meta'] = request.get_meta()
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CheckEstimateScanByteByRoomRequest import CheckEstimateScanByteByRoomRequest
 
         from gs2_chat_client.control.CheckEstimateScanByteByRoomResult import CheckEstimateScanByteByRoomResult
         return CheckEstimateScanByteByRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/log/estimate",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/log/estimate",
             service=self.ENDPOINT,
             component=CheckEstimateScanByteByRoomRequest.Constant.MODULE,
             target_function=CheckEstimateScanByteByRoomRequest.Constant.FUNCTION,
@@ -411,25 +412,31 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.SearchLogByAllRoomResult.SearchLogByAllRoomResult
         """
-        query_strings = {
-            'userId': request.get_user_id(),
-            'message': request.get_message(),
-            'meta': request.get_meta(),
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-            'useCache': request.get_use_cache(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_user_id() is not None:
+            query_strings['userId'] = request.get_user_id()
+        if request.get_message() is not None:
+            query_strings['message'] = request.get_message()
+        if request.get_meta() is not None:
+            query_strings['meta'] = request.get_meta()
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        if request.get_use_cache() is not None:
+            query_strings['useCache'] = request.get_use_cache()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.SearchLogByAllRoomRequest import SearchLogByAllRoomRequest
 
         from gs2_chat_client.control.SearchLogByAllRoomResult import SearchLogByAllRoomResult
         return SearchLogByAllRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/log",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/log",
             service=self.ENDPOINT,
             component=SearchLogByAllRoomRequest.Constant.MODULE,
             target_function=SearchLogByAllRoomRequest.Constant.FUNCTION,
@@ -460,25 +467,31 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.SearchLogByRoomResult.SearchLogByRoomResult
         """
-        query_strings = {
-            'userId': request.get_user_id(),
-            'message': request.get_message(),
-            'meta': request.get_meta(),
-            'begin': request.get_begin(),
-            'end': request.get_end(),
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-            'useCache': request.get_use_cache(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_user_id() is not None:
+            query_strings['userId'] = request.get_user_id()
+        if request.get_message() is not None:
+            query_strings['message'] = request.get_message()
+        if request.get_meta() is not None:
+            query_strings['meta'] = request.get_meta()
+        if request.get_begin() is not None:
+            query_strings['begin'] = request.get_begin()
+        if request.get_end() is not None:
+            query_strings['end'] = request.get_end()
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        if request.get_use_cache() is not None:
+            query_strings['useCache'] = request.get_use_cache()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.SearchLogByRoomRequest import SearchLogByRoomRequest
 
         from gs2_chat_client.control.SearchLogByRoomResult import SearchLogByRoomResult
         return SearchLogByRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/log",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/log",
             service=self.ENDPOINT,
             component=SearchLogByRoomRequest.Constant.MODULE,
             target_function=SearchLogByRoomRequest.Constant.FUNCTION,
@@ -494,21 +507,23 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeMessageResult.DescribeMessageResult
         """
-        query_strings = {
-            'password': request.get_password(),
-            'startAt': request.get_start_at(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        if request.get_password() is not None:
+            query_strings['password'] = request.get_password()
+        if request.get_start_at() is not None:
+            query_strings['startAt'] = request.get_start_at()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeMessageRequest import DescribeMessageRequest
 
         from gs2_chat_client.control.DescribeMessageResult import DescribeMessageResult
         return DescribeMessageResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message",
             service=self.ENDPOINT,
             component=DescribeMessageRequest.Constant.MODULE,
             target_function=DescribeMessageRequest.Constant.FUNCTION,
@@ -524,19 +539,19 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeMessageNoAuthResult.DescribeMessageNoAuthResult
         """
-        query_strings = {
-            'startAt': request.get_start_at(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_start_at() is not None:
+            query_strings['startAt'] = request.get_start_at()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeMessageNoAuthRequest import DescribeMessageNoAuthRequest
 
         from gs2_chat_client.control.DescribeMessageNoAuthResult import DescribeMessageNoAuthResult
         return DescribeMessageNoAuthResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message/force",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message/force",
             service=self.ENDPOINT,
             component=DescribeMessageNoAuthRequest.Constant.MODULE,
             target_function=DescribeMessageNoAuthRequest.Constant.FUNCTION,
@@ -561,15 +576,15 @@ class Gs2ChatClient(AbstractGs2Client):
             body["meta"] = request.get_meta()
         if request.get_password() is not None:
             body["password"] = request.get_password()
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.SendMessageRequest import SendMessageRequest
         from gs2_chat_client.control.SendMessageResult import SendMessageResult
         return SendMessageResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message",
             service=self.ENDPOINT,
             component=SendMessageRequest.Constant.MODULE,
             target_function=SendMessageRequest.Constant.FUNCTION,
@@ -593,14 +608,13 @@ class Gs2ChatClient(AbstractGs2Client):
 
         if request.get_meta() is not None:
             body["meta"] = request.get_meta()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.SendMessageNoAuthRequest import SendMessageNoAuthRequest
         from gs2_chat_client.control.SendMessageNoAuthResult import SendMessageNoAuthResult
         return SendMessageNoAuthResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/message/force",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/message/force",
             service=self.ENDPOINT,
             component=SendMessageNoAuthRequest.Constant.MODULE,
             target_function=SendMessageNoAuthRequest.Constant.FUNCTION,
@@ -642,14 +656,13 @@ class Gs2ChatClient(AbstractGs2Client):
             body["allowUserIds"] = request.get_allow_user_ids()
         if request.get_password() is not None:
             body["password"] = request.get_password()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CreateRoomRequest import CreateRoomRequest
         from gs2_chat_client.control.CreateRoomResult import CreateRoomResult
         return CreateRoomResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room",
             service=self.ENDPOINT,
             component=CreateRoomRequest.Constant.MODULE,
             target_function=CreateRoomRequest.Constant.FUNCTION,
@@ -665,13 +678,12 @@ class Gs2ChatClient(AbstractGs2Client):
         :type request: gs2_chat_client.control.DeleteRoomRequest.DeleteRoomRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteRoomRequest import DeleteRoomRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "",
             service=self.ENDPOINT,
             component=DeleteRoomRequest.Constant.MODULE,
             target_function=DeleteRoomRequest.Constant.FUNCTION,
@@ -687,19 +699,19 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeRoomResult.DescribeRoomResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeRoomRequest import DescribeRoomRequest
 
         from gs2_chat_client.control.DescribeRoomResult import DescribeRoomResult
         return DescribeRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room",
             service=self.ENDPOINT,
             component=DescribeRoomRequest.Constant.MODULE,
             target_function=DescribeRoomRequest.Constant.FUNCTION,
@@ -715,17 +727,15 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.GetRoomResult.GetRoomResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.GetRoomRequest import GetRoomRequest
 
         from gs2_chat_client.control.GetRoomResult import GetRoomResult
         return GetRoomResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "",
             service=self.ENDPOINT,
             component=GetRoomRequest.Constant.MODULE,
             target_function=GetRoomRequest.Constant.FUNCTION,
@@ -754,15 +764,15 @@ class Gs2ChatClient(AbstractGs2Client):
             body["offlineTransferSound"] = request.get_offline_transfer_sound()
         if request.get_password() is not None:
             body["password"] = request.get_password()
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CreateMySubscribeRequest import CreateMySubscribeRequest
         from gs2_chat_client.control.CreateMySubscribeResult import CreateMySubscribeResult
         return CreateMySubscribeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=CreateMySubscribeRequest.Constant.MODULE,
             target_function=CreateMySubscribeRequest.Constant.FUNCTION,
@@ -791,14 +801,13 @@ class Gs2ChatClient(AbstractGs2Client):
             body["offlineTransferSound"] = request.get_offline_transfer_sound()
         if request.get_password() is not None:
             body["password"] = request.get_password()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.CreateSubscribeRequest import CreateSubscribeRequest
         from gs2_chat_client.control.CreateSubscribeResult import CreateSubscribeResult
         return CreateSubscribeResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=CreateSubscribeRequest.Constant.MODULE,
             target_function=CreateSubscribeRequest.Constant.FUNCTION,
@@ -814,14 +823,14 @@ class Gs2ChatClient(AbstractGs2Client):
         :type request: gs2_chat_client.control.DeleteMySubscribeRequest.DeleteMySubscribeRequest
         """
         query_strings = {}
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteMySubscribeRequest import DeleteMySubscribeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/self/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/self/subscribe",
             service=self.ENDPOINT,
             component=DeleteMySubscribeRequest.Constant.MODULE,
             target_function=DeleteMySubscribeRequest.Constant.FUNCTION,
@@ -837,13 +846,12 @@ class Gs2ChatClient(AbstractGs2Client):
         :type request: gs2_chat_client.control.DeleteSubscribeRequest.DeleteSubscribeRequest
         """
         query_strings = {}
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DeleteSubscribeRequest import DeleteSubscribeRequest
         self._do_delete_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=DeleteSubscribeRequest.Constant.MODULE,
             target_function=DeleteSubscribeRequest.Constant.FUNCTION,
@@ -859,20 +867,21 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeMySubscribeResult.DescribeMySubscribeResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeMySubscribeRequest import DescribeMySubscribeRequest
 
         from gs2_chat_client.control.DescribeMySubscribeResult import DescribeMySubscribeResult
         return DescribeMySubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/user/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/user/subscribe",
             service=self.ENDPOINT,
             component=DescribeMySubscribeRequest.Constant.MODULE,
             target_function=DescribeMySubscribeRequest.Constant.FUNCTION,
@@ -888,19 +897,19 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeSubscribeByRoomIdResult.DescribeSubscribeByRoomIdResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeSubscribeByRoomIdRequest import DescribeSubscribeByRoomIdRequest
 
         from gs2_chat_client.control.DescribeSubscribeByRoomIdResult import DescribeSubscribeByRoomIdResult
         return DescribeSubscribeByRoomIdResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=DescribeSubscribeByRoomIdRequest.Constant.MODULE,
             target_function=DescribeSubscribeByRoomIdRequest.Constant.FUNCTION,
@@ -916,19 +925,19 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.DescribeSubscribeByUserIdResult.DescribeSubscribeByUserIdResult
         """
-        query_strings = {
-            'pageToken': request.get_page_token(),
-            'limit': request.get_limit(),
-        }
-        headers = { 
-        }
+        query_strings = {}
+        if request.get_page_token() is not None:
+            query_strings['pageToken'] = request.get_page_token()
+        if request.get_limit() is not None:
+            query_strings['limit'] = request.get_limit()
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.DescribeSubscribeByUserIdRequest import DescribeSubscribeByUserIdRequest
 
         from gs2_chat_client.control.DescribeSubscribeByUserIdResult import DescribeSubscribeByUserIdResult
         return DescribeSubscribeByUserIdResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=DescribeSubscribeByUserIdRequest.Constant.MODULE,
             target_function=DescribeSubscribeByUserIdRequest.Constant.FUNCTION,
@@ -944,18 +953,17 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.GetMySubscribeResult.GetMySubscribeResult
         """
-        query_strings = {
-        }
-        headers = { 
-            "X-GS2-ACCESS-TOKEN": request.get_access_token()
-        }
+        query_strings = {}
+        headers = {}
+        if request.get_access_token() is not None:
+            headers["X-GS2-ACCESS-TOKEN"] = request.get_access_token()
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.GetMySubscribeRequest import GetMySubscribeRequest
 
         from gs2_chat_client.control.GetMySubscribeResult import GetMySubscribeResult
         return GetMySubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/self/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/self/subscribe",
             service=self.ENDPOINT,
             component=GetMySubscribeRequest.Constant.MODULE,
             target_function=GetMySubscribeRequest.Constant.FUNCTION,
@@ -971,17 +979,15 @@ class Gs2ChatClient(AbstractGs2Client):
         :return: 結果
         :rtype: gs2_chat_client.control.GetSubscribeResult.GetSubscribeResult
         """
-        query_strings = {
-        }
-        headers = { 
-        }
+        query_strings = {}
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_chat_client.control.GetSubscribeRequest import GetSubscribeRequest
 
         from gs2_chat_client.control.GetSubscribeResult import GetSubscribeResult
         return GetSubscribeResult(self._do_get_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else url_encoder.encode(request.get_lobby_name()))) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else url_encoder.encode(request.get_room_id()))) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else url_encoder.encode(request.get_user_id()))) + "/subscribe",
+            url=Gs2Constant.ENDPOINT_HOST + "/lobby/" + str(("null" if request.get_lobby_name() is None or request.get_lobby_name() == "" else request.get_lobby_name())) + "/room/" + str(("null" if request.get_room_id() is None or request.get_room_id() == "" else request.get_room_id())) + "/user/" + str(("null" if request.get_user_id() is None or request.get_user_id() == "" else request.get_user_id())) + "/subscribe",
             service=self.ENDPOINT,
             component=GetSubscribeRequest.Constant.MODULE,
             target_function=GetSubscribeRequest.Constant.FUNCTION,

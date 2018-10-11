@@ -65,7 +65,7 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
+        if lobby_name is not None and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -94,7 +94,7 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
+        if room_id is not None and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -123,7 +123,7 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param user_id: ユーザID
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -152,7 +152,7 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param message: メッセージテキスト
         :type message: unicode
         """
-        if message and not (isinstance(message, str) or isinstance(message, unicode)):
+        if message is not None and not (isinstance(message, str) or isinstance(message, unicode)):
             raise TypeError(type(message))
         self.__message = message
 
@@ -181,7 +181,7 @@ class SendMessageNoAuthRequest(Gs2BasicRequest):
         :param meta: メッセージメタデータ
         :type meta: unicode
         """
-        if meta and not (isinstance(meta, str) or isinstance(meta, unicode)):
+        if meta is not None and not (isinstance(meta, str) or isinstance(meta, unicode)):
             raise TypeError(type(meta))
         self.__meta = meta
 

@@ -117,7 +117,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
+        if lobby_name is not None and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -146,7 +146,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param description: 説明文
         :type description: unicode
         """
-        if description and not (isinstance(description, str) or isinstance(description, unicode)):
+        if description is not None and not (isinstance(description, str) or isinstance(description, unicode)):
             raise TypeError(type(description))
         self.__description = description
 
@@ -175,7 +175,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param service_class: サービスクラス
         :type service_class: unicode
         """
-        if service_class and not (isinstance(service_class, str) or isinstance(service_class, unicode)):
+        if service_class is not None and not (isinstance(service_class, str) or isinstance(service_class, unicode)):
             raise TypeError(type(service_class))
         self.__service_class = service_class
 
@@ -204,7 +204,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param notification_type: 通知方式
         :type notification_type: unicode
         """
-        if notification_type and not (isinstance(notification_type, str) or isinstance(notification_type, unicode)):
+        if notification_type is not None and not (isinstance(notification_type, str) or isinstance(notification_type, unicode)):
             raise TypeError(type(notification_type))
         self.__notification_type = notification_type
 
@@ -233,7 +233,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param notification_url: http/https を選択した際の通知先URL
         :type notification_url: unicode
         """
-        if notification_url and not (isinstance(notification_url, str) or isinstance(notification_url, unicode)):
+        if notification_url is not None and not (isinstance(notification_url, str) or isinstance(notification_url, unicode)):
             raise TypeError(type(notification_url))
         self.__notification_url = notification_url
 
@@ -262,7 +262,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param notification_game_name: gs2-in-game-push-notification を選択した際の GS2-InGamePushNotification のゲーム名
         :type notification_game_name: unicode
         """
-        if notification_game_name and not (isinstance(notification_game_name, str) or isinstance(notification_game_name, unicode)):
+        if notification_game_name is not None and not (isinstance(notification_game_name, str) or isinstance(notification_game_name, unicode)):
             raise TypeError(type(notification_game_name))
         self.__notification_game_name = notification_game_name
 
@@ -291,7 +291,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param logging: ログを記録するか
         :type logging: bool
         """
-        if logging and not isinstance(logging, bool):
+        if logging is not None and not isinstance(logging, bool):
             raise TypeError(type(logging))
         self.__logging = logging
 
@@ -320,7 +320,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param logging_date: ログを記録する日数
         :type logging_date: int
         """
-        if logging_date and not isinstance(logging_date, int):
+        if logging_date is not None and not isinstance(logging_date, int):
             raise TypeError(type(logging_date))
         self.__logging_date = logging_date
 
@@ -349,7 +349,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param create_room_trigger_script: ルーム作成時 に実行されるGS2-Script
         :type create_room_trigger_script: unicode
         """
-        if create_room_trigger_script and not (isinstance(create_room_trigger_script, str) or isinstance(create_room_trigger_script, unicode)):
+        if create_room_trigger_script is not None and not (isinstance(create_room_trigger_script, str) or isinstance(create_room_trigger_script, unicode)):
             raise TypeError(type(create_room_trigger_script))
         self.__create_room_trigger_script = create_room_trigger_script
 
@@ -378,7 +378,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param create_room_done_trigger_script: ルーム作成完了時 に実行されるGS2-Script
         :type create_room_done_trigger_script: unicode
         """
-        if create_room_done_trigger_script and not (isinstance(create_room_done_trigger_script, str) or isinstance(create_room_done_trigger_script, unicode)):
+        if create_room_done_trigger_script is not None and not (isinstance(create_room_done_trigger_script, str) or isinstance(create_room_done_trigger_script, unicode)):
             raise TypeError(type(create_room_done_trigger_script))
         self.__create_room_done_trigger_script = create_room_done_trigger_script
 
@@ -407,7 +407,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param delete_room_trigger_script: ルーム削除時 に実行されるGS2-Script
         :type delete_room_trigger_script: unicode
         """
-        if delete_room_trigger_script and not (isinstance(delete_room_trigger_script, str) or isinstance(delete_room_trigger_script, unicode)):
+        if delete_room_trigger_script is not None and not (isinstance(delete_room_trigger_script, str) or isinstance(delete_room_trigger_script, unicode)):
             raise TypeError(type(delete_room_trigger_script))
         self.__delete_room_trigger_script = delete_room_trigger_script
 
@@ -436,7 +436,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param delete_room_done_trigger_script: ルーム削除完了時 に実行されるGS2-Script
         :type delete_room_done_trigger_script: unicode
         """
-        if delete_room_done_trigger_script and not (isinstance(delete_room_done_trigger_script, str) or isinstance(delete_room_done_trigger_script, unicode)):
+        if delete_room_done_trigger_script is not None and not (isinstance(delete_room_done_trigger_script, str) or isinstance(delete_room_done_trigger_script, unicode)):
             raise TypeError(type(delete_room_done_trigger_script))
         self.__delete_room_done_trigger_script = delete_room_done_trigger_script
 
@@ -465,7 +465,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param create_subscribe_trigger_script: ルーム購読時 に実行されるGS2-Script
         :type create_subscribe_trigger_script: unicode
         """
-        if create_subscribe_trigger_script and not (isinstance(create_subscribe_trigger_script, str) or isinstance(create_subscribe_trigger_script, unicode)):
+        if create_subscribe_trigger_script is not None and not (isinstance(create_subscribe_trigger_script, str) or isinstance(create_subscribe_trigger_script, unicode)):
             raise TypeError(type(create_subscribe_trigger_script))
         self.__create_subscribe_trigger_script = create_subscribe_trigger_script
 
@@ -494,7 +494,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param create_subscribe_done_trigger_script: ルーム購読完了時 に実行されるGS2-Script
         :type create_subscribe_done_trigger_script: unicode
         """
-        if create_subscribe_done_trigger_script and not (isinstance(create_subscribe_done_trigger_script, str) or isinstance(create_subscribe_done_trigger_script, unicode)):
+        if create_subscribe_done_trigger_script is not None and not (isinstance(create_subscribe_done_trigger_script, str) or isinstance(create_subscribe_done_trigger_script, unicode)):
             raise TypeError(type(create_subscribe_done_trigger_script))
         self.__create_subscribe_done_trigger_script = create_subscribe_done_trigger_script
 
@@ -523,7 +523,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param delete_subscribe_trigger_script: ルーム購読解除時 に実行されるGS2-Script
         :type delete_subscribe_trigger_script: unicode
         """
-        if delete_subscribe_trigger_script and not (isinstance(delete_subscribe_trigger_script, str) or isinstance(delete_subscribe_trigger_script, unicode)):
+        if delete_subscribe_trigger_script is not None and not (isinstance(delete_subscribe_trigger_script, str) or isinstance(delete_subscribe_trigger_script, unicode)):
             raise TypeError(type(delete_subscribe_trigger_script))
         self.__delete_subscribe_trigger_script = delete_subscribe_trigger_script
 
@@ -552,7 +552,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param delete_subscribe_done_trigger_script: ルーム購読解除完了時 に実行されるGS2-Script
         :type delete_subscribe_done_trigger_script: unicode
         """
-        if delete_subscribe_done_trigger_script and not (isinstance(delete_subscribe_done_trigger_script, str) or isinstance(delete_subscribe_done_trigger_script, unicode)):
+        if delete_subscribe_done_trigger_script is not None and not (isinstance(delete_subscribe_done_trigger_script, str) or isinstance(delete_subscribe_done_trigger_script, unicode)):
             raise TypeError(type(delete_subscribe_done_trigger_script))
         self.__delete_subscribe_done_trigger_script = delete_subscribe_done_trigger_script
 
@@ -581,7 +581,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param send_message_trigger_script: メッセージ送信時 に実行されるGS2-Script
         :type send_message_trigger_script: unicode
         """
-        if send_message_trigger_script and not (isinstance(send_message_trigger_script, str) or isinstance(send_message_trigger_script, unicode)):
+        if send_message_trigger_script is not None and not (isinstance(send_message_trigger_script, str) or isinstance(send_message_trigger_script, unicode)):
             raise TypeError(type(send_message_trigger_script))
         self.__send_message_trigger_script = send_message_trigger_script
 
@@ -610,7 +610,7 @@ class UpdateLobbyRequest(Gs2BasicRequest):
         :param send_message_done_trigger_script: メッセージ送信完了時 に実行されるGS2-Script
         :type send_message_done_trigger_script: unicode
         """
-        if send_message_done_trigger_script and not (isinstance(send_message_done_trigger_script, str) or isinstance(send_message_done_trigger_script, unicode)):
+        if send_message_done_trigger_script is not None and not (isinstance(send_message_done_trigger_script, str) or isinstance(send_message_done_trigger_script, unicode)):
             raise TypeError(type(send_message_done_trigger_script))
         self.__send_message_done_trigger_script = send_message_done_trigger_script
 

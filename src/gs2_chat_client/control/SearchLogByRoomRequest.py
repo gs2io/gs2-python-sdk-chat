@@ -85,7 +85,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
+        if lobby_name is not None and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
@@ -114,7 +114,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param room_id: ルームID
         :type room_id: unicode
         """
-        if room_id and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
+        if room_id is not None and not (isinstance(room_id, str) or isinstance(room_id, unicode)):
             raise TypeError(type(room_id))
         self.__room_id = room_id
 
@@ -143,7 +143,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param user_id: 検索するユーザID文字列(部分一致)
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -172,7 +172,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param message: 検索するメッセージテキスト文字列(部分一致)
         :type message: unicode
         """
-        if message and not (isinstance(message, str) or isinstance(message, unicode)):
+        if message is not None and not (isinstance(message, str) or isinstance(message, unicode)):
             raise TypeError(type(message))
         self.__message = message
 
@@ -201,7 +201,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param meta: 検索するメッセージメタデータ文字列(部分一致)
         :type meta: unicode
         """
-        if meta and not (isinstance(meta, str) or isinstance(meta, unicode)):
+        if meta is not None and not (isinstance(meta, str) or isinstance(meta, unicode)):
             raise TypeError(type(meta))
         self.__meta = meta
 
@@ -230,7 +230,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param begin: 検索期間 開始日時（エポック秒）
         :type begin: int
         """
-        if begin and not isinstance(begin, int):
+        if begin is not None and not isinstance(begin, int):
             raise TypeError(type(begin))
         self.__begin = begin
 
@@ -259,7 +259,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param end: 検索期間 終了日時（エポック秒）
         :type end: int
         """
-        if end and not isinstance(end, int):
+        if end is not None and not isinstance(end, int):
             raise TypeError(type(end))
         self.__end = end
 
@@ -288,7 +288,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param page_token: データの取得を開始する位置を指定するトークン
         :type page_token: unicode
         """
-        if page_token and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
+        if page_token is not None and not (isinstance(page_token, str) or isinstance(page_token, unicode)):
             raise TypeError(type(page_token))
         self.__page_token = page_token
 
@@ -317,7 +317,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param limit: データの取得件数
         :type limit: int
         """
-        if limit and not isinstance(limit, int):
+        if limit is not None and not isinstance(limit, int):
             raise TypeError(type(limit))
         self.__limit = limit
 
@@ -346,7 +346,7 @@ class SearchLogByRoomRequest(Gs2BasicRequest):
         :param use_cache: クエリキャッシュを有効にするか
         :type use_cache: bool
         """
-        if use_cache and not isinstance(use_cache, bool):
+        if use_cache is not None and not isinstance(use_cache, bool):
             raise TypeError(type(use_cache))
         self.__use_cache = use_cache
 

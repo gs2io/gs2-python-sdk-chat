@@ -49,7 +49,7 @@ class GetLobbyRequest(Gs2BasicRequest):
         :param lobby_name: ロビーの名前
         :type lobby_name: unicode
         """
-        if lobby_name and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
+        if lobby_name is not None and not (isinstance(lobby_name, str) or isinstance(lobby_name, unicode)):
             raise TypeError(type(lobby_name))
         self.__lobby_name = lobby_name
 
