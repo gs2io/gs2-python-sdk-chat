@@ -107,27 +107,27 @@ class CreateRoomRequest(Gs2BasicRequest):
 
     def get_allow_user_ids(self):
         """
-        ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定を取得
-        :return: ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定
-        :rtype: unicode
+        ルームへのアクセスを許可するユーザIDリストを指定を取得
+        :return: ルームへのアクセスを許可するユーザIDリストを指定
+        :rtype: list[unicode]
         """
         return self.__allow_user_ids
 
     def set_allow_user_ids(self, allow_user_ids):
         """
-        ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定を設定
-        :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定
-        :type allow_user_ids: unicode
+        ルームへのアクセスを許可するユーザIDリストを指定を設定
+        :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストを指定
+        :type allow_user_ids: list[unicode]
         """
-        if allow_user_ids is not None and not (isinstance(allow_user_ids, str) or isinstance(allow_user_ids, unicode)):
+        if allow_user_ids is not None and not isinstance(allow_user_ids, list):
             raise TypeError(type(allow_user_ids))
         self.__allow_user_ids = allow_user_ids
 
     def with_allow_user_ids(self, allow_user_ids):
         """
-        ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定を設定
-        :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストをカンマ区切りで指定
-        :type allow_user_ids: unicode
+        ルームへのアクセスを許可するユーザIDリストを指定を設定
+        :param allow_user_ids: ルームへのアクセスを許可するユーザIDリストを指定
+        :type allow_user_ids: list[unicode]
         :return: this
         :rtype: CreateRoomRequest
         """
